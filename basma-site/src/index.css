@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* marquee keyframes */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+/* Global font defaults */
+html {
+  font-family: theme('fontFamily.sans');
+}
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: theme('fontFamily.serif');
+}
+
+/* Bodoni FLF self-hosted font (place files in /public/fonts) */
+@font-face {
+  font-family: 'Bodoni FLF';
+  src: url('/fonts/BodoniFLF-Regular.woff2') format('woff2'),
+       url('/fonts/BodoniFLF-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Soft hero animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Vertical gentle slide loop for preview images */
+@keyframes slideUpDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6%); }
+  100% { transform: translateY(0); }
+}
+
+/* Card entrance animation */
+@keyframes cardEnter {
+  0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+  60% { opacity: 1; transform: translateY(0) scale(1.005); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Simple utility classes for page-wide transitions */
+.fade-up { animation: fadeUp 700ms ease-out both; }
+.fade-in { animation: fadeIn 600ms ease-out both; }
+.will-animate { opacity: 0; transform: translateY(10px); }
+
+/* Subtle starry noise overlay for dark backgrounds */
+.noise-overlay {
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.05) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  mix-blend-mode: screen;
+  opacity: 0.12;
+}
+@font-face {
+  font-family: 'Bodoni FLF';
+  src: url('/fonts/BodoniFLF-Bold.woff2') format('woff2'),
+       url('/fonts/BodoniFLF-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
