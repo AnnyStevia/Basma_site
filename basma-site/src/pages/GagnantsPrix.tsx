@@ -11,7 +11,6 @@ import img9 from '../assets/image/486840221_1088360849974725_5511276874634025115
 import img10 from '../assets/image/487065614_1088360506641426_1653589812142729089_n.jpg'
 import img11 from '../assets/image/486805115_1088360563308087_7628630968930271535_n.jpg'
 import img12 from '../assets/image/469354977_10162472028448234_4641629484451026544_n.jpg'
-import img13 from '../assets/image/486871050_1088886459922164_4966030406835988211_n.jpg'
 
 function GagnantsPrix() {
   const heroRef = useRef<HTMLElement>(null)
@@ -154,7 +153,7 @@ function GagnantsPrix() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 will-animate">
-            {winners.map((winner, index) => (
+            {winners.map((winner) => (
               <div key={winner.id} className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
                 <div className="relative h-64 overflow-hidden">
                   <img 

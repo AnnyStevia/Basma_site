@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import c1 from '@/assets/image/conferences/bandeau.jpg'
-import c2 from "@/assets/image/conferences/466669245_10162136551208234_8953480339713461583_n (1).jpg"
-import c3 from '@/assets/image/conferences/466042041_10162118159033234_2174382713487770106_n.jpg'
-import c4 from '@/assets/image/conferences/465907119_10162118159058234_699258427212432563_n.jpg'
-import c5 from '@/assets/image/conferences/465740229_10162118158743234_1854284088801059865_n.jpg'
-import c6 from '@/assets/image/conferences/Conf 2 carré AAI.png'
-import c7 from '@/assets/image/conferences/bandeau.jpg'
-import c8 from '@/assets/image/conferences/466042041_10162118159033234_2174382713487770106_n.jpg'
+import c1 from '../assets/image/conferences/bandeau.jpg'
+import c2 from "../assets/image/conferences/466669245_10162136551208234_8953480339713461583_n (1).jpg"
+import c3 from '../assets/image/conferences/466042041_10162118159033234_2174382713487770106_n.jpg'
+import c4 from '../assets/image/conferences/465907119_10162118159058234_699258427212432563_n.jpg'
+import c5 from '../assets/image/conferences/465740229_10162118158743234_1854284088801059865_n.jpg'
+import c6 from '../assets/image/conferences/Conf 2 carré AAI.png'
+import c7 from '../assets/image/conferences/bandeau.jpg'
+import c8 from '../assets/image/conferences/466042041_10162118159033234_2174382713487770106_n.jpg'
 
 function NosConferences() {
   const images = [c1, c2, c3, c4, c5, c6, c7, c8]
