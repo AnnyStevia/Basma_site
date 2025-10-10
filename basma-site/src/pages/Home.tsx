@@ -130,7 +130,7 @@ function Home() {
               </div>
 
           {/* Right mini slider */}
-          <div className="md:justify-self-end w-full max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="md:justify-self-end w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[img1, img2, img3, img4, img5]} />
                 </div>
                 </div>
@@ -140,7 +140,7 @@ function Home() {
       <section ref={setObserved(1)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left mini slider */}
-          <div className="w-full max-w-md mx-auto md:mx-0">
+          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
             <MiniSlider images={[atl1, atl2, atl3, atl4, atl5]} />
                 </div>
 
@@ -188,7 +188,7 @@ function Home() {
           </div>
 
           {/* Right mini slider */}
-          <div className="w-full max-w-md mx-auto md:mx-0 md:justify-self-end transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-end transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[at1, at2, at3, at4, at5, at6]} />
           </div>
         </div>
@@ -198,7 +198,7 @@ function Home() {
       <section ref={setObserved(3)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left mini slider */}
-          <div className="w-full max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[conf1, conf2, conf3, conf4, conf5, conf6]} />
         </div>
 
@@ -246,7 +246,7 @@ function Home() {
           </div>
 
           {/* Right mini slider */}
-          <div className="md:justify-self-end w-full max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="md:justify-self-end w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[img2, img3, img4, img5, img8]} />
           </div>
         </div>
@@ -256,7 +256,7 @@ function Home() {
       <section ref={setObserved(5)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left mini slider */}
-          <div className="w-full max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[mk1, mk2, mk3, mk4, mk5, mk6]} />
           </div>
 
