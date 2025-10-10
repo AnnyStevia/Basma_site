@@ -70,28 +70,29 @@ function Home() {
   }, [])
 
   return (
-    <div className="font-serif min-h-screen relative bg-white">
+    <div className="font-serif min-h-screen relative bg-white overflow-x-hidden">
       {/* Removed noise overlay for light theme */}
       <section className="relative w-full min-h-[140px] md:min-h-[240px] overflow-hidden">
         {/* Background carousel (slides left → right) */}
         <BackgroundCarousel images={[b1, b2, b3, b4, b5, b6]} />
         <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(1200px_600px_at_60%_30%,black,transparent)]" />
-        <div className="relative z-10 max-w-4xl mr-auto px-4 md:px-6 py-3 md:py-4 text-left">
+        <div className="relative z-10 w-full max-w-4xl mr-auto px-3 md:px-6 py-3 md:py-4 text-left">
       <div className="inline-flex items-center gap-2 rounded-full border border-neutral-300/70 bg-white/80 px-3 py-1 text-xs text-neutral-700 shadow-sm animate-[fadeUp_600ms_ease-out_100ms_both] transition-colors duration-300 hover:bg-white">
             <span>BASMA</span>
             <span className="h-1 w-1 rounded-full bg-amber-400" />
-            <span>Arts & Communauté</span>
+            <span className="hidden sm:inline">Arts & Communauté</span>
+            <span className="sm:hidden">Art</span>
           </div>
-          <div className="mt-4 space-y-4 rounded-xl bg-black/50 p-4 md:p-5 shadow-lg animate-[fadeUp_700ms_ease-out_150ms_both]">
-            <h1 className="font-serif text-3xl md:text-5xl leading-tight text-white animate-[fadeUp_700ms_ease-out_200ms_both]">
+          <div className="mt-3 md:mt-4 space-y-3 md:space-y-4 rounded-xl bg-black/50 p-3 md:p-5 shadow-lg animate-[fadeUp_700ms_ease-out_150ms_both]">
+            <h1 className="font-serif text-2xl sm:text-3xl md:text-5xl leading-tight text-white animate-[fadeUp_700ms_ease-out_200ms_both]">
               Bienvenue sur <span className="underline decoration-amber-400/80 underline-offset-4"><span>Beaux‑Arts</span> <span>Solidarité</span> <span>Maroc</span></span>
             </h1>
-            <p className="text-base md:text-lg text-white/90 bg-black px-3 py-2 rounded-md animate-[fadeUp_700ms_ease-out_250ms_both]">
+            <p className="text-sm md:text-lg text-white/90 bg-black px-2 md:px-3 py-1.5 md:py-2 rounded-md animate-[fadeUp_700ms_ease-out_250ms_both]">
               Nous révélons, accompagnons et célébrons la nouvelle génération d’artistes au Maroc. 
               À travers expositions, ateliers et workshops, nous offrons des opportunités concrètes pour faire rayonner 
               leurs œuvres et rencontrer des publics et des professionnels.
             </p>
-            <p className="text-xs md:text-sm text-white/80 animate-[fadeUp_700ms_ease-out_280ms_both]">
+            <p className="text-xs md:text-sm text-white/80 animate-[fadeUp_700ms_ease-out_280ms_both] hidden sm:block">
               Notre équipe réunit artistes, curateurs et mentors engagés. Ensemble, nous tissons des ponts entre
               disciplines, territoires et publics pour faire circuler les idées et révéler des trajectoires singulières.
             </p>
@@ -112,14 +113,14 @@ function Home() {
             <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
               Un espace vivant où les idées circulent, les œuvres dialoguent et les regards se rencontrent.
               Entre discussions, présentations et coups de cœur, le salon invite à découvrir autrement et à partager
-              l’expérience artistique, en toute proximité avec les créateur·rice·s.
+              l'expérience artistique, en toute proximité avec les créateur·rice·s.
             </p>
             <p className="mt-3 text-neutral-600 text-sm">
-              Chaque semaine, une sélection d’œuvres, de formats courts et de focus thématiques pour nourrir la curiosité.
+              Chaque semaine, une sélection d'œuvres, de formats courts et de focus thématiques pour nourrir la curiosité.
             </p>
             <p className="mt-3 text-neutral-600 text-sm">
               Découvrez des talents émergents, des parcours singuliers et des collaborations inédites qui font vibrer la scène locale.
-              Le salon met en avant les voix et les gestes d’aujourd’hui, avec un regard généreux et exigeant.
+              Le salon met en avant les voix et les gestes d'aujourd'hui, avec un regard généreux et exigeant.
             </p>
             <div className="mt-4 md:mt-5">
               <Link to="/LeSalon" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
@@ -129,7 +130,7 @@ function Home() {
               </div>
 
           {/* Right mini slider */}
-          <div className="md:justify-self-end w-full max-w-md transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="md:justify-self-end w-full max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[img1, img2, img3, img4, img5]} />
                 </div>
                 </div>
@@ -139,7 +140,7 @@ function Home() {
       <section ref={setObserved(1)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left mini slider */}
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-md mx-auto md:mx-0">
             <MiniSlider images={[atl1, atl2, atl3, atl4, atl5]} />
                 </div>
 
@@ -187,7 +188,7 @@ function Home() {
           </div>
 
           {/* Right mini slider */}
-          <div className="w-full max-w-md md:justify-self-end transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="w-full max-w-md mx-auto md:mx-0 md:justify-self-end transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[at1, at2, at3, at4, at5, at6]} />
           </div>
         </div>
@@ -197,7 +198,7 @@ function Home() {
       <section ref={setObserved(3)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left mini slider */}
-          <div className="w-full max-w-md md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="w-full max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[conf1, conf2, conf3, conf4, conf5, conf6]} />
         </div>
 
@@ -231,11 +232,11 @@ function Home() {
             <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Le Grand Public</h2>
             <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
               Une programmation accessible et généreuse pour tous les publics: visites guidées, rencontres, formats courts et
-              moments festifs. L’objectif: partager l’art et susciter la curiosité, quel que soit l’âge ou le niveau de pratique.
+              moments festifs. L'objectif: partager l'art et susciter la curiosité, quel que soit l'âge ou le niveau de pratique.
             </p>
             <p className="mt-3 text-neutral-600 text-sm">
-              En famille, entre ami·e·s ou en solo, découvrez une sélection d’expériences pensées pour ouvrir des portes et
-              donner envie de revenir. Parce que l’art se vit, se discute et se transmet.
+              En famille, entre ami·e·s ou en solo, découvrez une sélection d'expériences pensées pour ouvrir des portes et
+              donner envie de revenir. Parce que l'art se vit, se discute et se transmet.
             </p>
             <div className="mt-4 md:mt-5">
               <a href="#grand-public" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
@@ -245,7 +246,7 @@ function Home() {
           </div>
 
           {/* Right mini slider */}
-          <div className="md:justify-self-end w-full max-w-md transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="md:justify-self-end w-full max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[img2, img3, img4, img5, img8]} />
           </div>
         </div>
@@ -255,13 +256,13 @@ function Home() {
       <section ref={setObserved(5)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left mini slider */}
-          <div className="w-full max-w-md md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="w-full max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
             <MiniSlider images={[mk1, mk2, mk3, mk4, mk5, mk6]} />
           </div>
 
           {/* Right text */}
           <div className="md:pl-4">
-            <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Ce Geste vient d'ailleurs 1.54 Marrakech</h2>
+            <h2 className="font-serif text-xl sm:text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Ce Geste vient d'ailleurs 1.54 Marrakech</h2>
             <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
               Un rendez-vous dédié aux gestes, aux matières et aux circulations culturelles qui traversent la scène
               artistique contemporaine. À l’occasion de 1.54 Marrakech, ce focus met en lumière des pratiques hybrides,
