@@ -22,7 +22,7 @@ function Navbar() {
       </button>
 
       {/* Slide-over menu */}
-      <div className={`fixed inset-y-0 right-0 z-40 w-72 sm:w-80 transform transition-transform duration-300 ease-out ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed inset-y-0 right-0 z-40 w-64 sm:w-72 md:w-80 transform transition-transform duration-300 ease-out ${open ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/70 via-neutral-900/60 to-neutral-900/50 backdrop-blur-xl border-l border-white/10 shadow-2xl text-white">
           <div className="relative flex items-center justify-between px-5 py-3">
             <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-rose-400/60 via-indigo-400/60 to-amber-400/60" />

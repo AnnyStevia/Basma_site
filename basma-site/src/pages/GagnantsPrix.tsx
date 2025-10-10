@@ -87,7 +87,7 @@ function GagnantsPrix() {
   return (
     <div className="font-serif">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative w-full h-[80vh] overflow-hidden bg-gradient-to-br from-neutral-900 via-slate-800 to-neutral-900">
+      <section ref={heroRef} className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden bg-gradient-to-br from-neutral-900 via-slate-800 to-neutral-900">
         {/* Background Images Grid */}
         <div className="absolute inset-0 opacity-20">
           <div className="grid grid-cols-4 grid-rows-3 h-full">
@@ -118,20 +118,20 @@ function GagnantsPrix() {
               <span>EXCELLENCE ARTISTIQUE</span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight text-white mt-8 animate-[fadeUp_700ms_ease-out_200ms_both]">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl lg:text-8xl leading-tight text-white mt-6 md:mt-8 animate-[fadeUp_700ms_ease-out_200ms_both]">
               Les <span className="underline decoration-amber-400/80 underline-offset-4">Étoiles</span> de l'Art
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 mt-6 max-w-3xl mx-auto leading-relaxed animate-[fadeUp_700ms_ease-out_300ms_both]">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mt-4 md:mt-6 max-w-3xl mx-auto leading-relaxed animate-[fadeUp_700ms_ease-out_300ms_both]">
               Découvrez les talents exceptionnels qui ont marqué l'année 2024. 
               Ces artistes visionnaires redéfinissent les frontières de la création contemporaine marocaine.
             </p>
             
-            <div className="flex items-center justify-center gap-4 mt-8 animate-[fadeUp_700ms_ease-out_400ms_both]">
-              <a href="#gagnants" className="inline-flex items-center rounded-full bg-amber-400 text-black px-6 py-3 text-sm font-medium shadow-lg hover:bg-amber-300 transition">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 md:mt-8 animate-[fadeUp_700ms_ease-out_400ms_both]">
+              <a href="#gagnants" className="inline-flex items-center rounded-full bg-amber-400 text-black px-6 py-3 text-sm font-medium shadow-lg hover:bg-amber-300 transition w-full sm:w-auto justify-center">
                 Voir les gagnants
               </a>
-              <a href="#ceremonie" className="inline-flex items-center rounded-full border border-white/50 bg-white/10 backdrop-blur-sm text-white px-6 py-3 text-sm hover:bg-white/20 transition">
+              <a href="#ceremonie" className="inline-flex items-center rounded-full border border-white/50 bg-white/10 backdrop-blur-sm text-white px-6 py-3 text-sm hover:bg-white/20 transition w-full sm:w-auto justify-center">
                 Cérémonie de remise
               </a>
             </div>

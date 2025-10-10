@@ -43,7 +43,7 @@ function ExpoMarrakech() {
   return (
     <div className="font-serif">
       {/* Hero Section with Video */}
-      <section ref={heroRef} className="relative w-full h-[70vh] overflow-hidden">
+      <section ref={heroRef} className="relative w-full h-[55vh] md:h-[70vh] overflow-hidden">
         {/* Video Background */}
         <video
           autoPlay
@@ -68,20 +68,20 @@ function ExpoMarrakech() {
               <span>MARRAKECH 2024</span>
             </div>
             
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-white mt-8 animate-[fadeUp_700ms_ease-out_200ms_both]">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-tight text-white mt-6 md:mt-8 animate-[fadeUp_700ms_ease-out_200ms_both]">
               Ce Geste vient <span className="underline decoration-amber-400/80 underline-offset-4">D'ailleurs</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/90 mt-6 max-w-2xl mx-auto leading-relaxed animate-[fadeUp_700ms_ease-out_300ms_both]">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mt-4 md:mt-6 max-w-2xl mx-auto leading-relaxed animate-[fadeUp_700ms_ease-out_300ms_both]">
               Une immersion dans l'univers créatif de la nouvelle génération d'artistes marocains. 
               Découvrez des œuvres qui racontent notre époque, nos rêves et nos aspirations.
             </p>
             
-            <div className="flex items-center justify-center gap-4 mt-8 animate-[fadeUp_700ms_ease-out_400ms_both]">
-              <a href="#exposition" className="inline-flex items-center rounded-full bg-white text-neutral-900 px-6 py-3 text-sm font-medium shadow-lg hover:bg-white/90 transition">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-6 md:mt-8 animate-[fadeUp_700ms_ease-out_400ms_both]">
+              <a href="#exposition" className="inline-flex items-center rounded-full bg-white text-neutral-900 px-6 py-3 text-sm font-medium shadow-lg hover:bg-white/90 transition w-full sm:w-auto justify-center">
                 Explorer l'exposition
               </a>
-              <a href="#artistes" className="inline-flex items-center rounded-full border border-white/60 bg-white/10 backdrop-blur-sm text-white px-6 py-3 text-sm hover:bg-white/20 transition">
+              <a href="#artistes" className="inline-flex items-center rounded-full border border-white/60 bg-white/10 backdrop-blur-sm text-white px-6 py-3 text-sm hover:bg-white/20 transition w-full sm:w-auto justify-center">
                 Découvrir les artistes
               </a>
             </div>
@@ -182,10 +182,10 @@ function ExpoMarrakech() {
             <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400" />
             <h2 className="mt-3 font-serif text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Nos Artistes</h2>
           </div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-7 gap-4 md:gap-4">
             {[g1,g2,g3,g4,g5,g6,g7,g8,g9,g10,g11,g12,g13,g14,g15,g16].map((src, i) => (
               <div key={i} className="text-center">
-                <div className="relative mx-auto size-24 md:size-28 overflow-hidden rounded-full ring-2 ring-neutral-200 bg-neutral-100 shadow-sm transition-transform duration-500 ease-out hover:scale-[1.03]">
+                <div className="relative mx-auto size-20 sm:size-24 md:size-28 overflow-hidden rounded-full ring-2 ring-neutral-200 bg-neutral-100 shadow-sm transition-transform duration-500 ease-out hover:scale-[1.03]">
                   <img src={src} alt={`artiste-${i+1}`} className="w-full h-full object-cover" />
                 </div>
                 <div className="mt-1 text-[11px] md:text-xs text-neutral-700">Artiste {i + 1}</div>

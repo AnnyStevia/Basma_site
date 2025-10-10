@@ -161,7 +161,7 @@ function ActivitesWorkshop() {
   return (
     <div className="font-serif">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative w-full h-[85vh] overflow-hidden">
+      <section ref={heroRef} className="relative w-full h-[65vh] md:h-[85vh] overflow-hidden">
         {/* Video Background */}
         <video
           autoPlay
@@ -193,11 +193,11 @@ function ActivitesWorkshop() {
               <span>BASMA 2025</span>
             </div>
             
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight text-white mt-8 animate-[fadeUp_700ms_ease-out_200ms_both]">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-7xl lg:text-8xl leading-tight text-white mt-6 md:mt-8 animate-[fadeUp_700ms_ease-out_200ms_both]">
               Créez, <span className="underline decoration-yellow-300/80 underline-offset-4">Inspirez</span>, Évoluez
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 mt-6 max-w-3xl mx-auto leading-relaxed animate-[fadeUp_700ms_ease-out_300ms_both]">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mt-4 md:mt-6 max-w-3xl mx-auto leading-relaxed animate-[fadeUp_700ms_ease-out_300ms_both]">
               Plongez dans l'univers de la création artistique avec nos ateliers exceptionnels. 
               Découvrez de nouvelles techniques, développez votre talent et rencontrez d'autres passionnés.
             </p>
@@ -205,11 +205,11 @@ function ActivitesWorkshop() {
             <div className="flex items-center justify-center gap-4 mt-8 animate-[fadeUp_700ms_ease-out_400ms_both]">
               <button 
                 onClick={() => setIsFormOpen(true)}
-                className="inline-flex items-center rounded-full bg-white text-purple-600 px-8 py-4 text-lg font-medium shadow-xl hover:bg-white/90 hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center rounded-full bg-white text-purple-600 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-medium shadow-xl hover:bg-white/90 hover:scale-105 transition-all duration-300"
               >
                 S'inscrire maintenant
               </button>
-              <a href="#ateliers" className="inline-flex items-center rounded-full border border-white/50 bg-white/10 backdrop-blur-sm text-white px-8 py-4 text-lg hover:bg-white/20 hover:scale-105 transition-all duration-300">
+              <a href="#ateliers" className="inline-flex items-center rounded-full border border-white/50 bg-white/10 backdrop-blur-sm text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg hover:bg-white/20 hover:scale-105 transition-all duration-300">
                 Découvrir les ateliers
               </a>
             </div>
@@ -308,7 +308,7 @@ function ActivitesWorkshop() {
           </p>
           <button 
             onClick={() => setIsFormOpen(true)}
-            className="inline-flex items-center rounded-full bg-white text-purple-600 px-8 py-4 text-lg font-medium shadow-xl hover:bg-white/90 hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center rounded-full bg-white text-purple-600 px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-medium shadow-xl hover:bg-white/90 hover:scale-105 transition-all duration-300"
           >
             Commencer mon parcours artistique
           </button>
@@ -408,32 +408,31 @@ function ActivitesWorkshop() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-neutral-800 mb-1.5">Atelier souhaité</label>
-                  <select
-                    value={workshopSelected}
-                    onChange={(e)=>setWorkshopSelected(e.target.value)}
-                    className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  >
-                    <option value="">Sélectionner un atelier</option>
-                    {workshops.map((w) => (
-                      <option key={w.id} value={w.title}>
-                        {w.title}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-neutral-800 mb-1.5">Message (optionnel)</label>
-                  <textarea
-                    rows={3}
-                    value={message}
-                    onChange={(e)=>setMessage(e.target.value)}
-                    className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Ce qui vous intéresse..."
-                  />
-                </div>
+              <div>
+                <label className="block text-sm font-medium text-neutral-800 mb-1.5">Atelier souhaité</label>
+                <select
+                  value={workshopSelected}
+                  onChange={(e)=>setWorkshopSelected(e.target.value)}
+                  className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                >
+                  <option value="">Sélectionner un atelier</option>
+                  {workshops.map((w) => (
+                    <option key={w.id} value={w.title}>
+                      {w.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-neutral-800 mb-1.5">Message (optionnel)</label>
+                <textarea
+                  rows={3}
+                  value={message}
+                  onChange={(e)=>setMessage(e.target.value)}
+                  className="w-full rounded-xl border border-neutral-300 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="Ce qui vous intéresse..."
+                />
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-2">
