@@ -106,31 +106,31 @@ function Home() {
 
       {/* Le salon */}
       <section ref={setObserved(0)} className="w-full bg-white py-6 md:py-12 will-animate">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
-          <div>
-            <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Le salon</h2>
-            <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+          <div className="col-span-2 md:col-span-1 order-1 md:order-1">
+            <h2 className="font-serif text-lg md:text-4xl font-semibold tracking-tight text-neutral-900">Le salon</h2>
+            <p className="mt-2 md:mt-4 text-xs md:text-base text-neutral-700 leading-relaxed">
               Un espace vivant où les idées circulent, les œuvres dialoguent et les regards se rencontrent.
               Entre discussions, présentations et coups de cœur, le salon invite à découvrir autrement et à partager
               l'expérience artistique, en toute proximité avec les créateur·rice·s.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
               Chaque semaine, une sélection d'œuvres, de formats courts et de focus thématiques pour nourrir la curiosité.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
               Découvrez des talents émergents, des parcours singuliers et des collaborations inédites qui font vibrer la scène locale.
               Le salon met en avant les voix et les gestes d'aujourd'hui, avec un regard généreux et exigeant.
             </p>
-            <div className="mt-4 md:mt-5">
-              <Link to="/LeSalon" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
+            <div className="mt-3 md:mt-5">
+              <Link to="/LeSalon" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
                 En savoir plus
               </Link>
               </div>
               </div>
 
           {/* Right mini slider */}
-          <div className="md:justify-self-end w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="col-span-2 md:col-span-1 md:justify-self-end w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01] order-2 md:order-2">
             <MiniSlider images={[img1, img2, img3, img4, img5]} />
                 </div>
                 </div>
@@ -138,57 +138,57 @@ function Home() {
 
       {/* Le Prix */}
       <section ref={setObserved(1)} className="w-full bg-white py-6 md:py-12 will-animate">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-          {/* Left mini slider */}
-          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0">
-            <MiniSlider images={[atl1, atl2, atl3, atl4, atl5]} />
-                </div>
-
-          {/* Right text */}
-          <div className="md:pl-4">
-            <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Le Prix</h2>
-            <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
-              Un appel à projets qui valorise l’audace, la maîtrise et la singularité des démarches.
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
+          {/* Left text */}
+          <div className="col-span-2 md:col-span-1 md:pl-4 order-1 md:order-2">
+            <h2 className="font-serif text-lg md:text-4xl font-semibold tracking-tight text-neutral-900">Le Prix</h2>
+            <p className="mt-2 md:mt-4 text-xs md:text-base text-neutral-700 leading-relaxed">
+              Un appel à projets qui valorise l'audace, la maîtrise et la singularité des démarches.
               Le Prix BASMA accompagne les lauréat·e·s avec une visibilité renforcée, un mentorat dédié et des
-              opportunités d’expositions.
+              opportunités d'expositions.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
               Ouvert aux artistes émergent·e·s, il encourage les croisements de pratiques et la prise de risque,
               pour faire émerger des trajectoires nouvelles et fédérer une communauté engagée.
             </p>
-            <div className="mt-4 md:mt-5">
-              <a href="/le-prix" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
+            <div className="mt-3 md:mt-5">
+              <a href="/le-prix" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
                 En savoir plus
               </a>
             </div>
+          </div>
+
+          {/* Right mini slider */}
+          <div className="col-span-2 md:col-span-1 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 order-2 md:order-1">
+            <MiniSlider images={[atl1, atl2, atl3, atl4, atl5]} />
           </div>
         </div>
       </section>
 
       {/* Les Workshop */}
       <section ref={setObserved(2)} className="w-full bg-white py-6 md:py-12 will-animate">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
-          <div className="md:pr-4">
-            <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Les Workshop</h2>
-            <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+          <div className="col-span-2 md:col-span-1 md:pr-4 order-1 md:order-1">
+            <h2 className="font-serif text-lg md:text-4xl font-semibold tracking-tight text-neutral-900">Les Workshop</h2>
+            <p className="mt-2 md:mt-4 text-xs md:text-base text-neutral-700 leading-relaxed">
               Des formats courts et intensifs pour expérimenter, se perfectionner et faire émerger des projets concrets.
-              Encadrés par des artistes et mentors, les workshops favorisent la pratique, l’échange et le feedback exigeant
+              Encadrés par des artistes et mentors, les workshops favorisent la pratique, l'échange et le feedback exigeant
               dans une atmosphère bienveillante.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
               Techniques mixtes, photographie, édition, textiles, recherche ou performance — choisissez votre terrain de jeu
               et développez votre signature tout en enrichissant votre réseau.
             </p>
-            <div className="mt-4 md:mt-5">
-              <Link to="/themes/activites-workshop" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
+            <div className="mt-3 md:mt-5">
+              <Link to="/themes/activites-workshop" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
                 En savoir plus
               </Link>
             </div>
           </div>
 
           {/* Right mini slider */}
-          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-end transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="col-span-2 md:col-span-1 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-end transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01] order-2 md:order-2">
             <MiniSlider images={[at1, at2, at3, at4, at5, at6]} />
           </div>
         </div>
@@ -196,57 +196,57 @@ function Home() {
 
       {/* Les conférences */}
       <section ref={setObserved(3)} className="w-full bg-white py-6 md:py-12 will-animate">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-          {/* Left mini slider */}
-          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
-            <MiniSlider images={[conf1, conf2, conf3, conf4, conf5, conf6]} />
-        </div>
-
-          {/* Right text */}
-          <div className="md:pl-4">
-            <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Les conférences</h2>
-            <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
+          {/* Left text */}
+          <div className="col-span-2 md:col-span-1 md:pl-4 order-1 md:order-2">
+            <h2 className="font-serif text-lg md:text-4xl font-semibold tracking-tight text-neutral-900">Les conférences</h2>
+            <p className="mt-2 md:mt-4 text-xs md:text-base text-neutral-700 leading-relaxed">
               Espace de transmission et de débat, les conférences rassemblent artistes, chercheur·euse·s et professionnel·le·s
               autour de questions esthétiques, sociales et techniques. Elles donnent des clés de lecture, ouvrent des perspectives
               et nourrissent des échanges éclairés avec le public.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
-              Entre études de cas, retours d’expérience, démarches de création et dialogues interdisciplinaires, ces rencontres
-              mettent en lumière les trajectoires et les enjeux d’aujourd’hui. Rejoignez-nous pour confronter les idées et
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
+              Entre études de cas, retours d'expérience, démarches de création et dialogues interdisciplinaires, ces rencontres
+              mettent en lumière les trajectoires et les enjeux d'aujourd'hui. Rejoignez-nous pour confronter les idées et
               enrichir votre regard.
             </p>
-            <div className="mt-4 md:mt-5">
-              <Link to="/NosConferences" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
+            <div className="mt-3 md:mt-5">
+              <Link to="/NosConferences" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
                 Nos conférences
               </Link>
             </div>
+          </div>
+
+          {/* Right mini slider */}
+          <div className="col-span-2 md:col-span-1 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01] order-2 md:order-1">
+            <MiniSlider images={[conf1, conf2, conf3, conf4, conf5, conf6]} />
           </div>
         </div>
       </section>
 
       {/* Le Grand Public */}
       <section ref={setObserved(4)} className="w-full bg-white py-6 md:py-12 will-animate">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
-            <div>
-            <h2 className="font-serif text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Le Grand Public</h2>
-            <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+            <div className="col-span-2 md:col-span-1 order-1 md:order-1">
+            <h2 className="font-serif text-lg md:text-4xl font-semibold tracking-tight text-neutral-900">Le Grand Public</h2>
+            <p className="mt-2 md:mt-4 text-xs md:text-base text-neutral-700 leading-relaxed">
               Une programmation accessible et généreuse pour tous les publics: visites guidées, rencontres, formats courts et
               moments festifs. L'objectif: partager l'art et susciter la curiosité, quel que soit l'âge ou le niveau de pratique.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
               En famille, entre ami·e·s ou en solo, découvrez une sélection d'expériences pensées pour ouvrir des portes et
               donner envie de revenir. Parce que l'art se vit, se discute et se transmet.
             </p>
-            <div className="mt-4 md:mt-5">
-              <a href="#grand-public" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
+            <div className="mt-3 md:mt-5">
+              <a href="#grand-public" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">
                 Télécharger
               </a>
             </div>
           </div>
 
           {/* Right mini slider */}
-          <div className="md:justify-self-end w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
+          <div className="col-span-2 md:col-span-1 md:justify-self-end w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01] order-2 md:order-2">
             <MiniSlider images={[img2, img3, img4, img5, img8]} />
           </div>
         </div>
@@ -254,29 +254,29 @@ function Home() {
 
       {/* Le Geste vient d'ailleurs 1.54 Marrakech */}
       <section ref={setObserved(5)} className="w-full bg-white py-6 md:py-12 will-animate">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-          {/* Left mini slider */}
-          <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01]">
-            <MiniSlider images={[mk1, mk2, mk3, mk4, mk5, mk6]} />
-          </div>
-
-          {/* Right text */}
-          <div className="md:pl-4">
-            <h2 className="font-serif text-xl sm:text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900">Ce Geste vient d'ailleurs 1.54 Marrakech</h2>
-            <p className="mt-3 md:mt-4 text-sm md:text-base text-neutral-700 leading-relaxed">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
+          {/* Left text */}
+          <div className="col-span-2 md:col-span-1 md:pl-4 order-1 md:order-2">
+            <h2 className="font-serif text-lg sm:text-xl md:text-4xl font-semibold tracking-tight text-neutral-900">Ce Geste vient d'ailleurs 1.54 Marrakech</h2>
+            <p className="mt-2 md:mt-4 text-xs md:text-base text-neutral-700 leading-relaxed">
               Un rendez-vous dédié aux gestes, aux matières et aux circulations culturelles qui traversent la scène
-              artistique contemporaine. À l’occasion de 1.54 Marrakech, ce focus met en lumière des pratiques hybrides,
+              artistique contemporaine. À l'occasion de 1.54 Marrakech, ce focus met en lumière des pratiques hybrides,
               des dialogues entre territoires et des histoires sensibles portées par les artistes.
             </p>
-            <p className="mt-3 text-neutral-600 text-sm">
-              Performances, installations, rencontres et partages d’expériences articulent un parcours vivant, pour
-              comprendre d’où vient le geste et comment il se réinvente.
+            <p className="mt-2 md:mt-3 text-neutral-600 text-xs md:text-sm">
+              Performances, installations, rencontres et partages d'expériences articulent un parcours vivant, pour
+              comprendre d'où vient le geste et comment il se réinvente.
             </p>
-            <div className="mt-4 md:mt-5">
-              <Link to="/themes/expo-marrakech" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-4 py-1.5 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
+            <div className="mt-3 md:mt-5">
+              <Link to="/themes/expo-marrakech" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-3 py-1 md:px-5 md:py-2 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">
                 En savoir plus
               </Link>
             </div>
+          </div>
+
+          {/* Right mini slider */}
+          <div className="col-span-2 md:col-span-1 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto md:mx-0 md:justify-self-start transition-transform duration-500 ease-out will-change-transform hover:scale-[1.01] order-2 md:order-1">
+            <MiniSlider images={[mk1, mk2, mk3, mk4, mk5, mk6]} />
           </div>
         </div>
       </section>
