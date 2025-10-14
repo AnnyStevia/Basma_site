@@ -1,4 +1,7 @@
 import hero from '../assets/image/herof.jpg'
+import sal1 from '../assets/image/salon/salon2024-15.jpg'
+import sal2 from '../assets/image/salon/sal.jpg'
+import sal3 from '../assets/image/salon/334539670-594847099230850-1338619726552595696-n.jpg'
 
 function LePrix() {
   return (
@@ -93,10 +96,81 @@ function LePrix() {
           </div>
         </div>
       </section>
+
+      {/* Le Jury */}
+      <section className="w-full bg-gradient-to-b from-rose-50/60 via-white to-amber-50/40 py-10 md:py-14">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-3 py-1 shadow-sm animate-[fadeUp_600ms_ease-out_60ms_both]">
+              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+              <span className="text-[11px] md:text-xs text-neutral-700 tracking-wide">Sélection • Jury • Transparence</span>
+            </div>
+            <h2 className="mt-4 font-serif text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">Le Jury</h2>
+            <p className="mt-3 text-neutral-700 animate-[fadeUp_700ms_ease-out_120ms_both]">
+              Quatre personnalités réunies pour accompagner et distinguer des démarches exigeantes et singulières.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { img: sal1, name: 'Amal Ben Youssef', role: 'Présidente du jury', bio: 'Regard exigeant et bienveillant, au service de la création.' },
+              { img: sal2, name: 'Karim El Idrissi', role: 'Artiste & mentor', bio: 'Accompagne les trajectoires et encourage la prise de risque.' },
+              { img: sal3, name: 'Lina Ait Lhaj', role: 'Curatrice associée', bio: 'Croise les pratiques et tisse des dialogues féconds.' },
+              { img: sal1, name: 'Tarik Bennis', role: 'Programmation', bio: 'Relie œuvres et publics avec exigence et clarté.' },
+            ].map((m, i) => (
+              <JuryCard key={i} img={m.img} name={m.name} role={m.role} bio={m.bio} />
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
 
 export default LePrix
+
+function JuryCard({ img, name, role, bio }: { img: string; name: string; role: string; bio: string }) {
+  const [firstName, ...lastParts] = name.split(' ')
+  const lastName = lastParts.join(' ')
+  const country = 'Maroc'
+
+  return (
+    <article className="group will-animate animate-[fadeUp_600ms_ease-out_60ms_both]">
+      <div className="rounded-2xl bg-white/80 backdrop-blur-sm ring-1 ring-neutral-200 hover:ring-neutral-300 transition-shadow duration-300 shadow-sm hover:shadow-md overflow-hidden p-4 md:p-5">
+        <div className="flex items-start gap-3 md:gap-4">
+          <div className="shrink-0 rounded-xl overflow-hidden ring-1 ring-neutral-200 bg-neutral-100 shadow-xs">
+            <img src={img} alt={name} className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2 md:gap-2.5">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
+                <span className="text-neutral-500">Nom</span>
+                <span className="font-medium text-neutral-900 truncate">{lastName || firstName}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-indigo-300" />
+                <span className="text-neutral-500">Prénom</span>
+                <span className="font-medium text-neutral-900 truncate">{firstName}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                <span className="text-neutral-500">Pays</span>
+                <span className="font-medium text-neutral-900 truncate">{country}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+                <span className="text-neutral-500">Qualité</span>
+                <span className="font-medium text-neutral-900 truncate">{role}</span>
+              </div>
+            </div>
+            <h3 className="mt-2 text-sm md:text-base font-semibold tracking-tight text-neutral-900 line-clamp-1">{name}</h3>
+          </div>
+        </div>
+        <p className="mt-3 text-[12px] md:text-sm leading-relaxed text-neutral-600">{bio}</p>
+      </div>
+    </article>
+  )
+}
 
 

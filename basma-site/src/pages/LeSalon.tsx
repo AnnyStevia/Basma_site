@@ -222,16 +222,57 @@ function HeroCarousel({ images }: { images: string[] }) {
 export default LeSalon
 
 function CommitteeCard({ img, name, role, bio }: { img: string; name: string; role: string; bio: string }) {
+  const [firstName, ...lastParts] = name.split(' ')
+  const lastName = lastParts.join(' ')
+  const country = 'Maroc'
+
   return (
     <article className="group will-animate animate-[fadeUp_600ms_ease-out_60ms_both]">
-      <div className="rounded-xl bg-white/90 ring-1 ring-neutral-200 hover:ring-neutral-300 transition shadow-sm overflow-hidden aspect-square relative">
-        <img src={img} alt={name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-      </div>
-      <div className="mt-3">
-        <h3 className="text-base md:text-lg font-semibold text-neutral-900">{name}</h3>
-        <p className="text-amber-700 text-sm md:text-[15px] mt-0.5">{role}</p>
-        <p className="text-neutral-600 text-sm mt-1">{bio}</p>
+      <div className="rounded-2xl bg-white/80 backdrop-blur-sm ring-1 ring-neutral-200 hover:ring-neutral-300 transition-shadow duration-300 shadow-sm hover:shadow-md overflow-hidden p-4 md:p-5">
+        {/* Header row: image left, info right */}
+        <div className="flex items-start gap-3 md:gap-4">
+          <div className="shrink-0 rounded-xl overflow-hidden ring-1 ring-neutral-200 bg-neutral-100 shadow-xs">
+            <img
+              src={img}
+              alt={name}
+              className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+          </div>
+
+          {/* Inline info: Nom, Prénom, Pays, Qualité */}
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2 md:gap-2.5">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
+                <span className="text-neutral-500">Nom</span>
+                <span className="font-medium text-neutral-900 truncate">{lastName || firstName}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-indigo-300" />
+                <span className="text-neutral-500">Prénom</span>
+                <span className="font-medium text-neutral-900 truncate">{firstName}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+                <span className="text-neutral-500">Pays</span>
+                <span className="font-medium text-neutral-900 truncate">{country}</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+                <span className="text-neutral-500">Qualité</span>
+                <span className="font-medium text-neutral-900 truncate">{role}</span>
+              </div>
+            </div>
+
+            {/* Full name for accessibility on small screens */}
+            <h3 className="mt-2 text-sm md:text-base font-semibold tracking-tight text-neutral-900 line-clamp-1">{name}</h3>
+          </div>
+        </div>
+
+        {/* Bio */}
+        <p className="mt-3 text-[12px] md:text-sm leading-relaxed text-neutral-600">
+          {bio}
+        </p>
       </div>
     </article>
   )
