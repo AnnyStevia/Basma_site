@@ -1,20 +1,21 @@
-import { useEffect, useRef, useState } from 'react'
-import sal1 from '../assets/image/salon/salon2024-15.jpg'
-import sal2 from '../assets/image/salon/sal.jpg'
-import sal3 from '../assets/image/salon/334539670-594847099230850-1338619726552595696-n.jpg'
+ 
+import affiche from '../assets/image/Affiche A3 Emerging-HD.jpg'
 import selectionImg from '../assets/image/selection.jpg'
+import hommeIcon from '../assets/image/homme.png'
+import femmeIcon from '../assets/image/femme.png'
+import artistsXlsx from '../assets/Liste artistes 2025 simple.xlsx'
 
 function LeSalon() {
   return (
     <div className="min-h-screen bg-white">
-      <HeroCarousel images={[sal1, sal2, sal3]} />
+      <HeroImage />
 
       {/* Le Comité */}
-      <section className="w-full bg-gradient-to-b from-rose-50 to-amber-50/50 py-10 md:py-14">
+      <section id="committee" className="w-full bg-gradient-to-b from-[#000080]/8 via-blue-50/60 to-cyan-50/40 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-3 py-1 shadow-sm animate-[fadeUp_600ms_ease-out_60ms_both]">
-              <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
               <span className="text-[11px] md:text-xs text-neutral-700 tracking-wide">Curation • Mentorat • Réseau</span>
             </div>
             <h2 className="mt-4 font-serif text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">Le Comité</h2>
@@ -25,13 +26,21 @@ function LeSalon() {
           </div>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[0,1,2,3,4,5].map((i) => (
+            {[
+              { name: 'Ousseynou WADE', g: 'M' },
+              { name: 'Fatima Zahra LAKRISSA', g: 'F' },
+              { name: 'Ibtissam GHAZOUL', g: 'F' },
+              { name: 'Kenza AMROUK', g: 'F' },
+              { name: 'Nabil BAHYA', g: 'M' },
+              { name: 'Ilyass ALAMI AFILAL', g: 'M' },
+              { name: 'Farah MAAKEL', g: 'F' },
+              { name: 'Mustapha AKRIM', g: 'M' },
+              { name: 'Sanaa ZAGHOUD', g: 'F' },
+            ].map((m, i) => (
               <CommitteeCard
                 key={i}
-                img={[sal1, sal2, sal3][i % 3]}
-                name={["Amal Ben Youssef","Karim El Idrissi","Lina Ait Lhaj","Tarik Bennis","Nadia El Fassi","Youssef Gharbi"][i]}
-                role={["Commissaire d’exposition","Mentor & artiste","Curatrice associée","Coordinateur programmes","Partenariats & mécénat","Programmation & médiation"][i]}
-                bio="Fait dialoguer pratiques et publics, avec exigence et bienveillance."
+                img={m.g === 'F' ? femmeIcon : hommeIcon}
+                name={m.name}
               />
             ))}
           </div>
@@ -39,12 +48,12 @@ function LeSalon() {
       </section>
 
       {/* La sélection */}
-      <section className="w-full py-12 md:py-16 bg-gradient-to-br from-indigo-50/70 via-rose-50/50 to-amber-50/50">
+      <section id="selection" className="w-full py-12 md:py-16 bg-gradient-to-br from-blue-50/70 via-cyan-50/60 to-indigo-50/70">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-3 py-1 shadow-sm animate-[fadeUp_600ms_ease-out_60ms_both]">
-              <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
               <span className="text-[11px] md:text-xs text-neutral-700 tracking-wide">Processus • Jury • Transparence</span>
             </div>
             <h2 className="mt-4 font-serif text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">La sélection</h2>
@@ -55,7 +64,7 @@ function LeSalon() {
 
             <div className="mt-5">
               <a
-                href="/artistes-selectionnees.pdf"
+                href={artistsXlsx}
                 download
                 className="inline-flex items-center gap-2 rounded-full bg-neutral-900 text-white px-5 py-2 text-sm shadow-sm hover:bg-neutral-800 transition"
               >
@@ -63,9 +72,8 @@ function LeSalon() {
                   <path d="M12 3.75a.75.75 0 01.75.75v8.69l2.22-2.22a.75.75 0 111.06 1.06l-3.5 3.5a.75.75 0 01-1.06 0l-3.5-3.5a.75.75 0 111.06-1.06l2.22 2.22V4.5a.75.75 0 01.75-.75z" />
                   <path d="M3.75 15a.75.75 0 01.75.75v1.5A3.75 3.75 0 008.25 21h7.5A3.75 3.75 0 0019.5 17.25v-1.5a.75.75 0 011.5 0v1.5A5.25 5.25 0 0115.75 22.5h-7.5A5.25 5.25 0 013 17.25v-1.5A.75.75 0 013.75 15z" />
                 </svg>
-                Voir les artistes sélectionné·e·s
+                Télécharger la liste des artistes sélectionné·e·s
               </a>
-              <p className="mt-2 text-[11px] md:text-xs text-neutral-500">Placez votre document dans <code>public/artistes-selectionnees.pdf</code>.</p>
             </div>
           </div>
 
@@ -76,15 +84,15 @@ function LeSalon() {
               <div className="relative">
                 <img src={selectionImg} alt="Processus de sélection" className="w-full h-64 md:h-[360px] object-cover" />
                 <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1 text-[11px] md:text-xs text-neutral-800 shadow">
-                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
                   Parcours de sélection
                 </div>
               </div>
               <div className="px-4 md:px-5 py-4 md:py-5">
                 <div className="flex flex-wrap gap-2">
                   {['Anonyme', 'Exigence', 'Dialogue', 'Équilibre'].map((t) => (
-                    <span key={t} className="inline-flex items-center gap-1 rounded-full border border-neutral-200 px-2.5 py-1 text-[11px] text-neutral-700 bg-white hover:border-neutral-300 transition">
-                      <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />{t}
+                    <span key={t} className="inline-flex items-center gap-1 rounded-full border border-blue-100 px-2.5 py-1 text-[11px] text-neutral-700 bg-white hover:border-blue-200 transition">
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-300" />{t}
                     </span>
                   ))}
                 </div>
@@ -120,9 +128,9 @@ function LeSalon() {
                   { k: 'Accompagnement', c: 'Éditorial, montage et réseau professionnel.' },
                   { k: 'Ouverture', c: 'Attention aux diversités des parcours et expérimentations.' },
                 ].map((item, i) => (
-                  <div key={i} className="rounded-lg border border-neutral-200 bg-white p-3 shadow-sm transition-transform duration-300 hover:scale-[1.01]">
+                  <div key={i} className="rounded-lg border border-blue-100 bg-white p-3 shadow-sm transition-transform duration-300 hover:scale-[1.01]">
                     <div className="flex items-center gap-2 text-[13px] font-medium text-neutral-900">
-                      <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" /> {item.k}
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-500" /> {item.k}
                     </div>
                     <p className="mt-1 text-[11px] text-neutral-600">{item.c}</p>
                   </div>
@@ -136,146 +144,111 @@ function LeSalon() {
   )
 }
 
-function HeroCarousel({ images }: { images: string[] }) {
-  const [index, setIndex] = useState(0)
-  const [nextIndex, setNextIndex] = useState<number | null>(null)
-  const [isSliding, setIsSliding] = useState(false)
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const total = images.length
-
-  useEffect(() => {
-    if (total === 0) return
-    const id = setInterval(() => startSlide((index + 1) % total), 2000)
-    return () => clearInterval(id)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, total])
-
-  function startSlide(target: number) {
-    if (total === 0) return
-    const normalized = (target + total) % total
-    if (normalized === index) return
-    setNextIndex(normalized)
-    setIsSliding(true)
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        if (!containerRef.current) return
-        containerRef.current.style.transition = 'transform 900ms cubic-bezier(0.16,1,0.3,1)'
-        containerRef.current.style.transform = 'translateX(-50%)'
-      })
-    })
-  }
-
-  function handleTransitionEnd() {
-    if (!isSliding || nextIndex === null || !containerRef.current) return
-    setIndex(nextIndex)
-    setNextIndex(null)
-    setIsSliding(false)
-    containerRef.current.style.transition = 'none'
-    containerRef.current.style.transform = 'translateX(0)'
-    // force reflow then restore transition for next slide
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    containerRef.current.offsetHeight
-    containerRef.current.style.transition = 'transform 900ms cubic-bezier(0.16,1,0.3,1)'
-  }
-
-  const leftSrc = images[index]
-  const rightSrc = images[nextIndex ?? index]
-
+function HeroImage() {
   return (
-    <section className="relative w-full bg-center bg-cover min-h-[300px] md:min-h-[460px]">
-      {/* sliding track using percentage, shows next image peeking when sliding */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="flex h-full w-[200%] will-change-transform"
-          style={{ transform: 'translateX(0)' }}
-          ref={containerRef}
-          onTransitionEnd={handleTransitionEnd}
-        >
-          <img src={leftSrc} alt="salon" className="w-1/2 h-full object-cover" />
-          <img src={rightSrc} alt="salon" className="w-1/2 h-full object-cover" />
+    <section className="relative w-full min-h-[360px] md:min-h-[560px] overflow-hidden">
+      {/* Colorful background */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-24 -left-24 size-[420px] rounded-full bg-blue-600/30 blur-[80px]" />
+        <div className="absolute -bottom-28 -right-16 size-[480px] rounded-full bg-indigo-700/30 blur-[90px]" />
+        <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 size-[360px] rounded-full bg-cyan-500/25 blur-[80px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/70 via-indigo-50/70 to-cyan-50/70" />
+      </div>
+      {/* Navy tint veil (#000080) for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/85 via-[#000080]/75 to-[#000080]/85" />
+      {/* Layout: image left, text right */}
+      <div className="relative z-10 max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 px-4 md:px-8 py-8 md:py-12 items-center">
+        {/* Left image - show entire poster */}
+        <div className="relative h-64 md:h-[480px] rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-lg bg-white/80 flex items-center justify-center p-3 md:p-4">
+          <img src={affiche} alt="Affiche" className="max-h-full max-w-full object-contain" />
+          <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(1000px_600px_at_80%_40%,black,transparent)]" />
+        </div>
+
+        {/* Right content */}
+        <div className="relative">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-3 py-1 text-[11px] md:text-xs text-white shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> 2e édition • 2025
+          </div>
+          <h1 className="mt-4 font-serif text-3xl md:text-5xl leading-tight text-white">
+            Le Salon – Émergence
+          </h1>
+          <p className="mt-3 text-sm md:text-base text-white/90">
+            Un rendez‑vous dédié aux artistes contemporains émergents, ouvert aux publics et aux
+            professionnels. Une programmation exigeante et généreuse au cœur de Casablanca.
+          </p>
+          <div className="mt-4 space-y-2 text-white/85 text-xs md:text-sm">
+            <p>• Expositions, conférences, masterclasses et ateliers grand public.</p>
+            <p>• 40 artistes sélectionné·e·s et 5 invité·e·s d’Afrique de l’Ouest.</p>
+            <p>• Du 4 novembre au 24 décembre 2025 – Villa des Arts de Casablanca.</p>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a href="#committee" className="inline-flex items-center rounded-full bg-white text-neutral-900 px-5 py-2.5 text-sm shadow hover:bg-white/90 transition">Découvrir le comité</a>
+            <a href="#selection" className="inline-flex items-center rounded-full border border-white/70 bg-white/10 backdrop-blur-sm text-white px-5 py-2.5 text-sm hover:bg-white/20 transition">Voir la sélection</a>
+          </div>
         </div>
       </div>
-
-      {/* gradient veil with mask for better readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/40" />
-      <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(900px_420px_at_60%_30%,black,transparent)]" />
-
-      {/* content */}
-      <div className="relative z-10 max-w-4xl mr-auto px-4 md:px-6 py-6 md:py-8 text-left">
-        <div className="space-y-3 md:space-y-4 rounded-xl bg-black/35 p-4 md:p-6 shadow-lg animate-[fadeUp_700ms_ease-out_100ms_both]">
-          <h1 className="font-serif text-3xl md:text-5xl leading-tight text-white">Le Salon</h1>
-          <p className="text-sm md:text-base text-white/85">
-            Une scène exigeante et ouverte où les œuvres rencontrent leurs publics. Découvrez une programmation
-            d’expositions, de rencontres et de focus thématiques, au plus près des artistes.
-          </p>
-          <p className="text-xs md:text-sm text-white/75">
-            Ici, les pratiques se croisent et se répondent: peinture, photographie, installation, performance.
-            Le Salon accompagne les regards curieux et propose des formats accessibles, pour ressentir, comprendre
-            et partager l’expérience artistique.
-          </p>
-        </div>
-      </div>
+      {/* Soft vignette edges */}
+      <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(1200px_720px_at_50%_45%,black,transparent)]" />
     </section>
   )
 }
 
 export default LeSalon
 
-function CommitteeCard({ img, name, role, bio }: { img: string; name: string; role: string; bio: string }) {
+function CommitteeCard({ img, name }: { img: string; name: string }) {
   const [firstName, ...lastParts] = name.split(' ')
   const lastName = lastParts.join(' ')
-  const country = 'Maroc'
 
   return (
-    <article className="group will-animate animate-[fadeUp_600ms_ease-out_60ms_both]">
-      <div className="rounded-2xl bg-white/80 backdrop-blur-sm ring-1 ring-neutral-200 hover:ring-neutral-300 transition-shadow duration-300 shadow-sm hover:shadow-md overflow-hidden p-4 md:p-5">
-        {/* Header row: image left, info right */}
-        <div className="flex items-start gap-3 md:gap-4">
-          <div className="shrink-0 rounded-xl overflow-hidden ring-1 ring-neutral-200 bg-neutral-100 shadow-xs">
-            <img
-              src={img}
-              alt={name}
-              className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-            />
-          </div>
+    <article className="h-full group will-animate animate-[fadeUp_600ms_ease-out_60ms_both]">
+      {/* Gradient frame */}
+      <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-blue-200/70 via-cyan-200/70 to-indigo-200/70 transition-transform duration-300 group-hover:-translate-y-0.5">
+        {/* Glow on hover */}
+        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 [mask-image:radial-gradient(200px_140px_at_50%_0%,black,transparent)] bg-gradient-to-b from-white/40 to-transparent" />
 
-          {/* Inline info: Nom, Prénom, Pays, Qualité */}
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2 md:gap-2.5">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
-                <span className="text-neutral-500">Nom</span>
-                <span className="font-medium text-neutral-900 truncate">{lastName || firstName}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-300" />
-                <span className="text-neutral-500">Prénom</span>
-                <span className="font-medium text-neutral-900 truncate">{firstName}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
-                <span className="text-neutral-500">Pays</span>
-                <span className="font-medium text-neutral-900 truncate">{country}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
-                <span className="text-neutral-500">Qualité</span>
-                <span className="font-medium text-neutral-900 truncate">{role}</span>
-              </div>
+        {/* Card body */}
+        <div className="relative h-full flex flex-col items-center text-center rounded-[14px] bg-white/85 backdrop-blur-sm ring-1 ring-blue-50 shadow-sm hover:shadow-lg transition-shadow p-5">
+          {/* Avatar with gradient ring */}
+          <div className="p-[3px] rounded-full bg-gradient-to-br from-blue-300 via-cyan-300 to-indigo-300">
+            <div className="size-24 md:size-28 rounded-full overflow-hidden ring-1 ring-white/60 bg-neutral-100 shadow-xs">
+              <img src={img} alt={name} className="w-full h-full object-cover" />
             </div>
-
-            {/* Full name for accessibility on small screens */}
-            <h3 className="mt-2 text-sm md:text-base font-semibold tracking-tight text-neutral-900 line-clamp-1">{name}</h3>
           </div>
-        </div>
 
-        {/* Bio */}
-        <p className="mt-3 text-[12px] md:text-sm leading-relaxed text-neutral-600">
-          {bio}
-        </p>
+          {/* Name */}
+          <h3 className="mt-3 text-base md:text-lg font-semibold tracking-tight text-neutral-900 line-clamp-2">
+            {name}
+          </h3>
+
+          {/* Structured info as colorful chips */}
+          <div className="mt-2 grid grid-cols-2 gap-1.5 w-full max-w-xs text-[11px] md:text-xs">
+            <div className="inline-flex items-center justify-between gap-2 rounded-lg bg-blue-50/80 text-neutral-800 px-3 py-1 ring-1 ring-blue-100">
+              <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />Nom</span>
+              <span className="font-medium truncate">{lastName || firstName}</span>
+            </div>
+            <div className="inline-flex items-center justify-between gap-2 rounded-lg bg-cyan-50/80 text-neutral-800 px-3 py-1 ring-1 ring-cyan-100">
+              <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />Prénom</span>
+              <span className="font-medium truncate">{firstName}</span>
+            </div>
+            <div className="inline-flex items-center justify-between gap-2 rounded-lg bg-indigo-50/80 text-neutral-800 px-3 py-1 ring-1 ring-indigo-100">
+              <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />Pays</span>
+              <span className="font-medium">à remplir</span>
+            </div>
+            <div className="inline-flex items-center justify-between gap-2 rounded-lg bg-blue-50/80 text-neutral-800 px-3 py-1 ring-1 ring-blue-100">
+              <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-blue-400" />Qualité</span>
+              <span className="font-medium">à remplir</span>
+            </div>
+          </div>
+
+          {/* Placeholder note */}
+          <p className="mt-3 text-[12px] md:text-sm leading-relaxed text-neutral-600 line-clamp-3">
+            À remplir
+          </p>
+
+          <div className="mt-auto" />
+        </div>
       </div>
     </article>
   )
 }
-
 

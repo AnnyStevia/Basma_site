@@ -1,22 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import marrakechVideo from '../assets/videos/marrakech.mp4'
-import g1 from '../assets/image/pexels-isa-bulle-120385-367903.jpg'
-import g2 from '../assets/image/pexels-daiangan-102127.jpg'
-import g3 from '../assets/image/pexels-sebastiaan9977-1097456.jpg'
-import g4 from '../assets/image/pexels-paduret-1193743.jpg'
-import g5 from '../assets/image/pexels-steve-1585325.jpg'
-import g6 from '../assets/image/pexels-jplenio-1114883.jpg'
+// Images used in tabs and sections
 import g7 from '../assets/image/marrakech/154.jpg'
 import g8 from '../assets/image/marrakech/26048904lpw-26054010-article-jpg_10120230.jpg'
 import g9 from '../assets/image/marrakech/26048904lpw-26054599-embed-libre-jpg_10120233.jpg'
 import g10 from '../assets/image/marrakech/Capture.PNG'
 import g11 from '../assets/image/marrakech/MAR.avif'
 import g12 from '../assets/image/marrakech/MARR.jpg'
-// Drop PNG to avoid TS module issues
-import g13 from '../assets/image/atelier/486871050_1088886459922164_4966030406835988211_n.jpg'
-import g14 from '../assets/image/atelier/486610315_1088360936641383_2690010386236441209_n.jpg'
-import g15 from '../assets/image/atelier/486805115_1088360563308087_7628630968930271535_n.jpg'
-import g16 from '../assets/image/atelier/486611008_1088360486641428_6290542586408835721_n.jpg'
+import hommeIcon from '../assets/image/homme.png'
+import femmeIcon from '../assets/image/femme.png'
 
 function ExpoMarrakech() {
   const heroRef = useRef<HTMLElement>(null)
@@ -182,13 +174,60 @@ function ExpoMarrakech() {
             <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400" />
             <h2 className="mt-3 font-serif text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Nos Artistes</h2>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-7 gap-4 md:gap-4">
-            {[g1,g2,g3,g4,g5,g6,g7,g8,g9,g10,g11,g12,g13,g14,g15,g16].map((src, i) => (
-              <div key={i} className="text-center">
-                <div className="relative mx-auto size-20 sm:size-24 md:size-28 overflow-hidden rounded-full ring-2 ring-neutral-200 bg-neutral-100 shadow-sm transition-transform duration-500 ease-out hover:scale-[1.03]">
-                  <img src={src} alt={`artiste-${i+1}`} className="w-full h-full object-cover" />
+          {/* Liste nominative avec icône genre */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            {[
+              { n: 'AHNACH Mohamed', l: 'Khenifra, Maroc', g: 'M' },
+              { n: 'AIT EL MALLALI Mehdi', l: 'Paris, France', g: 'M' },
+              { n: 'AIT TAGADIRT Mariam', l: 'Casablanca, Maroc', g: 'F' },
+              { n: 'ALIBRAHIMI Maïssane', l: 'Rabat, Maroc', g: 'F' },
+              { n: 'AMRANI Ayoub', l: 'Casablanca, Maroc', g: 'M' },
+              { n: 'ARAFATI Fatine', l: 'Casablanca, Maroc', g: 'F' },
+              { n: 'BAZZI Naoual', l: 'Milan, Italie', g: 'F' },
+              { n: 'BENSENNA El Mehdi', l: 'Casablanca, Maroc', g: 'M' },
+              { n: 'BERCHICHE Fatima Zahra', l: 'Casablanca, Maroc', g: 'F' },
+              { n: 'BERHIL Hamza', l: 'Laâyoune, Maroc', g: 'M' },
+              { n: 'BOUALI Soukaina', l: 'Casablanca, Maroc', g: 'F' },
+              { n: 'BOUDRAA Nassim', l: 'Montreuil, France', g: 'M' },
+              { n: 'CHIHAD Zouhair', l: 'Casablanca, Maroc', g: 'M' },
+              { n: 'CHORRIB Issam', l: 'Casablanca, Maroc', g: 'M' },
+              { n: 'DEFOIN Mélanie Etbissemm', l: 'Braine-Le-Comte, Belgique', g: 'F' },
+              { n: 'DOUJDID Anass', l: 'Meknès, Maroc', g: 'M' },
+              { n: 'ELHASSNAOUI Mouad', l: 'Casablanca, Maroc', g: 'M' },
+              { n: 'FADIL Rabie', l: 'Kénitra, Maroc', g: 'M' },
+              { n: 'FADILI Rassane', l: 'Rabat, Maroc', g: 'M' },
+              { n: 'FARIANE Issam', l: 'Casablanca, Maroc', g: 'M' },
+              { n: 'ILANGA Djo', l: 'Rabat, Maroc', g: 'M' },
+              { n: 'JOUD Aissa', l: 'Ouarzazate, Maroc', g: 'M' },
+              { n: 'KACHIRI Sarah Mounia', l: 'Marrakech, Maroc', g: 'F' },
+              { n: 'KEBDANI Sirine', l: 'Casablanca, Maroc', g: 'F' },
+              { n: 'KHAMILY Mohamed', l: 'Tétouan, Maroc', g: 'M' },
+              { n: 'LAARIBI Imane', l: 'M’diq, Maroc', g: 'F' },
+              { n: 'LARGOU Karim', l: 'France', g: 'M' },
+              { n: 'LEHAMAOUI Chaimae', l: 'Ifrane, Maroc', g: 'F' },
+              { n: 'MAJDI Yasmine', l: 'Casablanca, Maroc', g: 'F' },
+              { n: 'MARMOUCHE Hamza', l: 'Marrakech, Maroc', g: 'M' },
+              { n: 'MEDIOUNI Soukaina', l: 'Rabat, Maroc', g: 'F' },
+              { n: 'MOHAMMED El Hajoui', l: 'Italie', g: 'M' },
+              { n: 'MOHAMMED BELMABK HOUT Belmabkhout Mohammed', l: 'El Jadida, Maroc', g: 'M' },
+              { n: 'MOUNMI Mouna', l: 'Tétouan, Maroc', g: 'F' },
+              { n: 'OULACHGAR Abdellah', l: 'Agadir, Maroc', g: 'M' },
+              { n: 'OUSSAADAN Mourad', l: 'Tétouan, Maroc', g: 'M' },
+              { n: 'RADI Mohamed', l: 'Tétouan, Maroc', g: 'M' },
+              { n: 'RATBI Yanis', l: 'Épinay-sur-Seine, France', g: 'M' },
+              { n: 'SEBTI Chaimae', l: 'Tanger, Maroc', g: 'F' },
+              { n: 'TAJEDDINE Mohamed Amine', l: 'Casablanca, Maroc', g: 'M' }
+            ].map((a, i) => (
+              <div key={i} className="flex items-center gap-3 p-3 rounded-xl ring-1 ring-neutral-200 bg-white shadow-sm">
+                <img
+                  src={a.g === 'F' ? femmeIcon : hommeIcon}
+                  alt={a.g === 'F' ? 'femme' : 'homme'}
+                  className="size-10 md:size-12 rounded-full ring-1 ring-neutral-200"
+                />
+                <div className="min-w-0">
+                  <div className="text-sm md:text-base font-medium text-neutral-900 truncate">{a.n}</div>
+                  <div className="text-[11px] md:text-xs text-neutral-600 truncate">{a.l}</div>
                 </div>
-                <div className="mt-1 text-[11px] md:text-xs text-neutral-700">Artiste {i + 1}</div>
               </div>
             ))}
           </div>

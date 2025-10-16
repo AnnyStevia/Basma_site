@@ -1,7 +1,6 @@
 import hero from '../assets/image/herof.jpg'
-import sal1 from '../assets/image/salon/salon2024-15.jpg'
-import sal2 from '../assets/image/salon/sal.jpg'
-import sal3 from '../assets/image/salon/334539670-594847099230850-1338619726552595696-n.jpg'
+import hommeIcon from '../assets/image/homme.png'
+import femmeIcon from '../assets/image/femme.png'
 
 function LePrix() {
   return (
@@ -111,12 +110,14 @@ function LePrix() {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { img: sal1, name: 'Amal Ben Youssef', role: 'Présidente du jury', bio: 'Regard exigeant et bienveillant, au service de la création.' },
-              { img: sal2, name: 'Karim El Idrissi', role: 'Artiste & mentor', bio: 'Accompagne les trajectoires et encourage la prise de risque.' },
-              { img: sal3, name: 'Lina Ait Lhaj', role: 'Curatrice associée', bio: 'Croise les pratiques et tisse des dialogues féconds.' },
-              { img: sal1, name: 'Tarik Bennis', role: 'Programmation', bio: 'Relie œuvres et publics avec exigence et clarté.' },
+              { img: hommeIcon, name: 'Mahi BINEBINE', role: 'À remplir', bio: 'À remplir' },
+              { img: hommeIcon, name: 'Ousseynou WADE', role: 'À remplir', bio: 'À remplir' },
+              { img: femmeIcon, name: 'Fatima-Zahra LAKRISSA', role: 'À remplir', bio: 'À remplir' },
+              { img: femmeIcon, name: 'Kenza AMROUK', role: 'À remplir', bio: 'À remplir' },
+              { img: hommeIcon, name: 'Nabil BAHYA', role: 'À remplir', bio: 'À remplir' },
+              { img: hommeIcon, name: 'Ilyass ALAMI AFILAL', role: 'À remplir', bio: 'À remplir' },
             ].map((m, i) => (
               <JuryCard key={i} img={m.img} name={m.name} role={m.role} bio={m.bio} />
             ))}
