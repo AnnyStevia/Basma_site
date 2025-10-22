@@ -7,12 +7,113 @@ import g9 from '../assets/image/marrakech/26048904lpw-26054599-embed-libre-jpg_1
 import g10 from '../assets/image/marrakech/Capture.PNG'
 import g11 from '../assets/image/marrakech/MAR.avif'
 import g12 from '../assets/image/marrakech/MARR.jpg'
-import hommeIcon from '../assets/image/homme.png'
-import femmeIcon from '../assets/image/femme.png'
+ 
 
 function ExpoMarrakech() {
   const heroRef = useRef<HTMLElement>(null)
   const [activeTab, setActiveTab] = useState<'curation' | 'artistes' | 'expo'>('curation')
+
+  // Load all artist images from the artistes directory
+  const artistImages = (import.meta as unknown as { glob: any }).glob(
+    '../assets/image/artistes/*',
+    { eager: true, import: 'default' }
+  ) as Record<string, string>
+
+  function getFileNameFromPath(path: string): string {
+    const parts = path.split('/')
+    return parts[parts.length - 1] || path
+  }
+
+  function toTitleCase(input: string): string {
+    return input
+      .split(' ')
+      .filter(Boolean)
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ')
+  }
+
+  function deriveArtistNameFromFilename(filename: string): string {
+    const base = filename.replace(/\.[^.]+$/, '')
+    const cleaned = base
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .replace(/[_.]+/g, ' ')
+      .replace(/\s*\(.*?\)\s*/g, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .trim()
+    const parts = cleaned.split('-').map(s => s.trim()).filter(Boolean)
+    const picked = parts.length > 0 ? parts.reduce((a, b) => (b.length > a.length ? b : a)) : cleaned
+    return toTitleCase(picked.toLowerCase())
+  }
+
+  function normalizeForMatch(input: string): string {
+    return input
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim()
+  }
+
+  const locationList: { n: string; l: string }[] = [
+    { n: 'AHNACH Mohamed', l: 'Khenifra, Maroc' },
+    { n: 'AIT EL MALLALI Mehdi', l: 'Paris, France' },
+    { n: 'AIT TAGADIRT Mariam', l: 'Casablanca, Maroc' },
+    { n: 'ALIBRAHIMI Maïssane', l: 'Rabat, Maroc' },
+    { n: 'AMRANI Ayoub', l: 'Casablanca, Maroc' },
+    { n: 'ARAFATI Fatine', l: 'Casablanca, Maroc' },
+    { n: 'BAZZI Naoual', l: 'Milan, Italie' },
+    { n: 'BENSENNA El Mehdi', l: 'Casablanca, Maroc' },
+    { n: 'BERCHICHE Fatima zahra', l: 'Casablanca, Maroc' },
+    { n: 'BERHIL Hamza', l: 'Laâyoune, Maroc' },
+    { n: 'BOUALI Soukaina', l: 'Casablanca, Maroc' },
+    { n: 'BOUDRAA Nassim', l: 'Montreuil, France' },
+    { n: 'CHIHAD Zouhair', l: 'Casablanca, Maroc' },
+    { n: 'CHORRIB ISSAM', l: 'Casablanca, Maroc' },
+    { n: 'DEFOIN Mélanie Etbissemm', l: 'Braine-Le-Comte, Belgique' },
+    { n: 'DOUJDID anass', l: 'Meknes, Maroc' },
+    { n: 'ELHASSNAOUI mouad', l: 'Casablanca, Maroc' },
+    { n: 'FADIL RABIE', l: 'Kenitra, Maroc' },
+    { n: 'FADILI Rassane', l: 'Rabat, Maroc' },
+    { n: 'FARIANE Issam', l: 'Casablanca, Maroc' },
+    { n: 'ILANGA Djo', l: 'Rabat, Maroc' },
+    { n: 'JOUD Aissa', l: 'Ouarzazate , Maroc' },
+    { n: 'KACHIRI Sarah Mounia', l: 'Marrakech, Maroc' },
+    { n: 'KEBDANI sirine', l: 'Casablanca, Maroc' },
+    { n: 'KHAMILY MOHAMED', l: 'Tetouan, Maroc' },
+    { n: 'LAARIBI Imane', l: 'Mdiq, Maroc' },
+    { n: 'LARGOU Karim', l: 'France' },
+    { n: 'LEHAMAOUI Chaimae', l: 'Ifrane, Maroc' },
+    { n: 'MAJDI Yasmine', l: 'Casablanca, Maroc' },
+    { n: 'MARMOUCHE Hamza', l: 'Marrakech, Maroc' },
+    { n: 'MEDIOUNI Soukaina', l: 'Rabat, Maroc' },
+    { n: 'MOHAMMED EL Hajoui', l: 'Italie' },
+    { n: 'MOHAMMED BELMABKHOUT Belmabkhout mohammed', l: 'El jadida, Maroc' },
+    { n: 'MOUNMI Mouna', l: 'Tetouan, Maroc' },
+    { n: 'OULACHGAR Abdellah', l: 'Agadir, Maroc' },
+    { n: 'OUSSAADAN Mourad', l: 'Tetouan, Maroc' },
+    { n: 'RADI Mohamed', l: 'Tetouan, Maroc' },
+    { n: 'RATBI Yanis', l: 'Epinay-sur-seine, France' },
+    { n: 'SEBTI Chaimae', l: 'Tanger, Maroc' },
+    { n: 'TAJEDDINE mohamed amine', l: 'Casablanca, Maroc' },
+  ]
+
+  function findLocationForName(displayName: string): string | undefined {
+    const dn = normalizeForMatch(displayName)
+    for (const entry of locationList) {
+      const en = normalizeForMatch(entry.n)
+      if (dn.includes(en) || en.includes(dn)) return entry.l
+      // Try reversing first/last order
+      const parts = en.split(' ')
+      if (parts.length >= 2) {
+        const rev = normalizeForMatch(parts.slice(1).join(' ') + ' ' + parts[0])
+        if (dn.includes(rev) || rev.includes(dn)) return entry.l
+      }
+    }
+    return undefined
+  }
+
+  // image matching no longer needed; deriving directly from filenames
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +132,8 @@ function ExpoMarrakech() {
 
     return () => observer.disconnect()
   }, [])
+
+  // removed legacy list (now reading directly from artistes directory)
 
   return (
     <div className="font-serif">
@@ -167,70 +270,63 @@ function ExpoMarrakech() {
         </div>
       </section>
 
+      {/* Section Divider */}
+      <div className="relative py-8">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-neutral-200"></div>
+        </div>
+        <div className="relative flex justify-center">
+          <div className="bg-white px-6 py-2">
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full animate-pulse shadow-lg"></div>
+              <div className="w-2 h-2 bg-gradient-to-r from-rose-400 to-rose-600 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+              <div className="w-4 h-4 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full animate-pulse shadow-lg" style={{ animationDelay: '0.6s' }}></div>
+              <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full animate-pulse" style={{ animationDelay: '0.9s' }}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Artistes */}
-      <section className="py-14 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-8">
-            <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400" />
-            <h2 className="mt-3 font-serif text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Nos Artistes</h2>
-          </div>
-          {/* Liste nominative avec icône genre */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-            {[
-              { n: 'AHNACH Mohamed', l: 'Khenifra, Maroc', g: 'M' },
-              { n: 'AIT EL MALLALI Mehdi', l: 'Paris, France', g: 'M' },
-              { n: 'AIT TAGADIRT Mariam', l: 'Casablanca, Maroc', g: 'F' },
-              { n: 'ALIBRAHIMI Maïssane', l: 'Rabat, Maroc', g: 'F' },
-              { n: 'AMRANI Ayoub', l: 'Casablanca, Maroc', g: 'M' },
-              { n: 'ARAFATI Fatine', l: 'Casablanca, Maroc', g: 'F' },
-              { n: 'BAZZI Naoual', l: 'Milan, Italie', g: 'F' },
-              { n: 'BENSENNA El Mehdi', l: 'Casablanca, Maroc', g: 'M' },
-              { n: 'BERCHICHE Fatima Zahra', l: 'Casablanca, Maroc', g: 'F' },
-              { n: 'BERHIL Hamza', l: 'Laâyoune, Maroc', g: 'M' },
-              { n: 'BOUALI Soukaina', l: 'Casablanca, Maroc', g: 'F' },
-              { n: 'BOUDRAA Nassim', l: 'Montreuil, France', g: 'M' },
-              { n: 'CHIHAD Zouhair', l: 'Casablanca, Maroc', g: 'M' },
-              { n: 'CHORRIB Issam', l: 'Casablanca, Maroc', g: 'M' },
-              { n: 'DEFOIN Mélanie Etbissemm', l: 'Braine-Le-Comte, Belgique', g: 'F' },
-              { n: 'DOUJDID Anass', l: 'Meknès, Maroc', g: 'M' },
-              { n: 'ELHASSNAOUI Mouad', l: 'Casablanca, Maroc', g: 'M' },
-              { n: 'FADIL Rabie', l: 'Kénitra, Maroc', g: 'M' },
-              { n: 'FADILI Rassane', l: 'Rabat, Maroc', g: 'M' },
-              { n: 'FARIANE Issam', l: 'Casablanca, Maroc', g: 'M' },
-              { n: 'ILANGA Djo', l: 'Rabat, Maroc', g: 'M' },
-              { n: 'JOUD Aissa', l: 'Ouarzazate, Maroc', g: 'M' },
-              { n: 'KACHIRI Sarah Mounia', l: 'Marrakech, Maroc', g: 'F' },
-              { n: 'KEBDANI Sirine', l: 'Casablanca, Maroc', g: 'F' },
-              { n: 'KHAMILY Mohamed', l: 'Tétouan, Maroc', g: 'M' },
-              { n: 'LAARIBI Imane', l: 'M’diq, Maroc', g: 'F' },
-              { n: 'LARGOU Karim', l: 'France', g: 'M' },
-              { n: 'LEHAMAOUI Chaimae', l: 'Ifrane, Maroc', g: 'F' },
-              { n: 'MAJDI Yasmine', l: 'Casablanca, Maroc', g: 'F' },
-              { n: 'MARMOUCHE Hamza', l: 'Marrakech, Maroc', g: 'M' },
-              { n: 'MEDIOUNI Soukaina', l: 'Rabat, Maroc', g: 'F' },
-              { n: 'MOHAMMED El Hajoui', l: 'Italie', g: 'M' },
-              { n: 'MOHAMMED BELMABK HOUT Belmabkhout Mohammed', l: 'El Jadida, Maroc', g: 'M' },
-              { n: 'MOUNMI Mouna', l: 'Tétouan, Maroc', g: 'F' },
-              { n: 'OULACHGAR Abdellah', l: 'Agadir, Maroc', g: 'M' },
-              { n: 'OUSSAADAN Mourad', l: 'Tétouan, Maroc', g: 'M' },
-              { n: 'RADI Mohamed', l: 'Tétouan, Maroc', g: 'M' },
-              { n: 'RATBI Yanis', l: 'Épinay-sur-Seine, France', g: 'M' },
-              { n: 'SEBTI Chaimae', l: 'Tanger, Maroc', g: 'F' },
-              { n: 'TAJEDDINE Mohamed Amine', l: 'Casablanca, Maroc', g: 'M' }
-            ].map((a, i) => (
-              <div key={i} className="flex items-center gap-3 p-3 rounded-xl ring-1 ring-neutral-200 bg-white shadow-sm">
-                <img
-                  src={a.g === 'F' ? femmeIcon : hommeIcon}
-                  alt={a.g === 'F' ? 'femme' : 'homme'}
-                  className="size-10 md:size-12 rounded-full ring-1 ring-neutral-200"
-                />
-                <div className="min-w-0">
-                  <div className="text-sm md:text-base font-medium text-neutral-900 truncate">{a.n}</div>
-                  <div className="text-[11px] md:text-xs text-neutral-600 truncate">{a.l}</div>
-                </div>
+      <section className="py-14 bg-gradient-to-br from-neutral-50 via-white to-amber-50/30 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '40px 40px'
+        }} />
+        
+        {/* Decorative Elements - More Visible */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-amber-300/40 to-amber-500/40 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-10 right-10 w-48 h-48 bg-gradient-to-br from-indigo-300/40 to-rose-300/40 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-rose-300/40 to-amber-300/40 rounded-full blur-lg animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 right-1/3 w-20 h-20 bg-gradient-to-br from-indigo-300/30 to-purple-300/30 rounded-full blur-lg animate-pulse" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-28 h-28 bg-gradient-to-br from-amber-300/30 to-orange-300/30 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+          <div className="mb-6 md:mb-8">
+            <div className="flex items-end justify-between">
+              <div>
+                <div className="mx-0 h-1 w-16 rounded-full bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400" />
+                <h2 className="mt-3 font-serif text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">Nos Artistes</h2>
               </div>
-            ))}
+              <div className="text-neutral-500 text-sm md:text-base"><span className="font-medium text-neutral-800">{(0 + 1).toString().padStart(2,'0')}</span>/<span>{'12'}</span></div>
+            </div>
           </div>
+
+          {/* Carrousel d'artistes */}
+          <ArtistCarousel
+            artists={Object.entries(artistImages)
+              .map(([path, url]) => {
+                const name = deriveArtistNameFromFilename(getFileNameFromPath(path))
+                const location = findLocationForName(name)
+                console.log('Artist:', { path, url, name, location }) // Debug log
+                return {
+                  name,
+                  imageUrl: url as string,
+                  location,
+                }
+              })}
+          />
         </div>
       </section>
     </div>
@@ -238,3 +334,153 @@ function ExpoMarrakech() {
 }
 
 export default ExpoMarrakech
+
+type CarouselArtist = { name: string; imageUrl: string; location?: string }
+
+function ArtistCarousel({ artists }: { artists: CarouselArtist[] }) {
+  const [index, setIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+
+  const count = artists.length
+  const clamp = (n: number) => (n < 0 ? 0 : n >= count ? count - 1 : n)
+
+  function centerCard(i: number) {
+    const node = containerRef.current
+    if (!node) return
+    const card = node.querySelector<HTMLDivElement>(`[data-idx="${i}"]`)
+    if (!card) return
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2
+    const targetLeft = Math.max(0, cardCenter - node.clientWidth / 2)
+    node.scrollTo({ left: targetLeft, behavior: 'smooth' })
+  }
+
+  function goTo(i: number) {
+    const next = clamp(i)
+    setIndex(next)
+    centerCard(next)
+  }
+  const next = () => goTo(index + 1)
+  const prev = () => goTo(index - 1)
+
+  // Autoplay
+  useEffect(() => {
+    if (count <= 1) return
+    const id = setInterval(() => {
+      const n = index + 1 >= count ? 0 : index + 1
+      setIndex(n)
+      centerCard(n)
+    }, 3500)
+    return () => clearInterval(id)
+  }, [index, count])
+
+  // Intersection Observer for visibility
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div className="relative">
+      {/* Carousel Background Elements - More Visible */}
+      <div className="absolute -top-12 -left-12 w-40 h-40 bg-gradient-to-br from-amber-300/50 to-amber-500/50 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-gradient-to-br from-indigo-300/50 to-rose-300/50 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 -left-8 w-32 h-32 bg-gradient-to-br from-rose-300/40 to-purple-300/40 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 -right-8 w-36 h-36 bg-gradient-to-br from-amber-300/40 to-orange-300/40 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+      <div
+        ref={containerRef}
+        className="flex items-center gap-4 md:gap-8 overflow-hidden scroll-smooth"
+        style={{ scrollBehavior: 'smooth' }}
+      >
+        {artists.map((a, i) => {
+          const isCenter = i === index
+          const delay = isVisible ? i * 100 : 0
+          return (
+            <div
+              key={`${a.name}-${i}`}
+              data-idx={i}
+              className={
+                `flex-none relative rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200 ring-1 ring-neutral-200 shadow-xl hover:shadow-2xl transition-all duration-700 hover:ring-2 hover:ring-amber-400/50 hover:scale-105 transform ` +
+                (isCenter ? 'w-64 sm:w-72 md:w-96 h-80 md:h-[28rem] scale-100' : 'w-40 sm:w-48 md:w-56 h-60 md:h-72 scale-95 opacity-90') +
+                (isVisible ? ' animate-fade-in' : ' opacity-0')
+              }
+              style={{
+                animationDelay: `${delay}ms`,
+                animationFillMode: 'forwards'
+              }}
+            >
+              <img 
+                src={a.imageUrl} 
+                alt={a.name} 
+                className="absolute inset-0 w-full h-full object-cover" 
+                onError={(e) => {
+                  console.error('Image failed to load:', a.imageUrl, a.name)
+                  e.currentTarget.style.display = 'none'
+                }}
+                onLoad={() => console.log('Image loaded successfully:', a.name)}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-radial from-black/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 opacity-10" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundSize: '20px 20px'
+              }} />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-gradient-to-r from-white to-amber-200 bg-clip-text text-transparent font-serif text-2xl md:text-4xl tracking-tight font-bold drop-shadow-xl">{a.name}</div>
+                {a.location && (
+                  <div className="text-white/90 text-xs md:text-sm mt-1 drop-shadow-lg font-medium">{a.location}</div>
+                )}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Arrows */}
+      <button
+        aria-label="Précédent"
+        onClick={prev}
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-neutral-900 shadow-lg hover:bg-white hover:shadow-xl hover:scale-110 transition-all duration-300"
+      >
+        <span className="text-xl font-bold">‹</span>
+      </button>
+      <button
+        aria-label="Suivant"
+        onClick={next}
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-neutral-900 shadow-lg hover:bg-white hover:shadow-xl hover:scale-110 transition-all duration-300"
+      >
+        <span className="text-xl font-bold">›</span>
+      </button>
+
+      {/* Dots */}
+      <div className="mt-6 flex items-center justify-center gap-2">
+        {Array.from({ length: count }).map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Aller à ${i + 1}`}
+            onClick={() => goTo(i)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === index 
+                ? 'w-8 bg-gradient-to-r from-amber-400 to-amber-600 shadow-lg animate-pulse' 
+                : 'w-3 bg-neutral-400 hover:bg-neutral-500 hover:scale-110'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}

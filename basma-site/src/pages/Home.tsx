@@ -96,16 +96,20 @@ function Home() {
               Notre équipe réunit artistes, curateurs et mentors engagés. Ensemble, nous tissons des ponts entre
               disciplines, territoires et publics pour faire circuler les idées et révéler des trajectoires singulières.
             </p>
-            <div className="flex items-center gap-2 animate-[fadeUp_700ms_ease-out_300ms_both]">
-              <a href="#explorer" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-4 py-1.5 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">Explorer</a>
-              <a href="#ateliers" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-4 py-1.5 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">Nos ateliers</a>
+            <div className="flex flex-wrap items-center gap-2 animate-[fadeUp_700ms_ease-out_300ms_both]">
+              <a href="#salon" className="inline-flex items-center rounded-full bg-neutral-900 text-white px-3 py-1.5 text-xs md:text-sm shadow-sm hover:bg-neutral-800 transition">Le Salon</a>
+              <a href="#prix" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">Le Prix</a>
+              <a href="#workshop" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">Workshop</a>
+              <a href="#conferences" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">Conférences</a>
+              <a href="#grand-public" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">Grand Public</a>
+              <a href="#marrakech" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs md:text-sm text-neutral-900 hover:bg-neutral-50 transition">Marrakech</a>
             </div>
           </div>
         </div>
       </section>
 
       {/* Le salon */}
-      <section ref={setObserved(0)} className="w-full bg-white py-6 md:py-12 will-animate">
+      <section id="salon" ref={setObserved(0)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
           <div className="col-span-2 md:col-span-1 order-1 md:order-1">
@@ -137,7 +141,7 @@ function Home() {
       </section>
 
       {/* Le Prix */}
-      <section ref={setObserved(1)} className="w-full bg-white py-6 md:py-12 will-animate">
+      <section id="prix" ref={setObserved(1)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
           <div className="col-span-2 md:col-span-1 md:pl-4 order-1 md:order-2">
@@ -166,7 +170,7 @@ function Home() {
       </section>
 
       {/* Les Workshop */}
-      <section ref={setObserved(2)} className="w-full bg-white py-6 md:py-12 will-animate">
+      <section id="workshop" ref={setObserved(2)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
           <div className="col-span-2 md:col-span-1 md:pr-4 order-1 md:order-1">
@@ -195,7 +199,7 @@ function Home() {
       </section>
 
       {/* Les conférences */}
-      <section ref={setObserved(3)} className="w-full bg-white py-6 md:py-12 will-animate">
+      <section id="conferences" ref={setObserved(3)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
           <div className="col-span-2 md:col-span-1 md:pl-4 order-1 md:order-2">
@@ -225,7 +229,7 @@ function Home() {
       </section>
 
       {/* Le Grand Public */}
-      <section ref={setObserved(4)} className="w-full bg-white py-6 md:py-12 will-animate">
+      <section id="grand-public" ref={setObserved(4)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
             <div className="col-span-2 md:col-span-1 order-1 md:order-1">
@@ -253,7 +257,7 @@ function Home() {
       </section>
 
       {/* Le Geste vient d'ailleurs 1.54 Marrakech */}
-      <section ref={setObserved(5)} className="w-full bg-white py-6 md:py-12 will-animate">
+      <section id="marrakech" ref={setObserved(5)} className="w-full bg-white py-6 md:py-12 will-animate">
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 gap-3 md:gap-8 items-center">
           {/* Left text */}
           <div className="col-span-2 md:col-span-1 md:pl-4 order-1 md:order-2">
