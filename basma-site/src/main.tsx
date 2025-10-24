@@ -10,6 +10,7 @@ import GagnantsPrix from './pages/GagnantsPrix'
 import ActivitesWorkshop from './pages/ActivitesWorkshop'
 import NosConferences from './pages/NosConferences'
 import LePrix from './pages/LePrix'
+import VisiteGuidees from './pages/VisiteGuidees'
 
 
 function Gallery() {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
       { path: 'themes/gagnants-prix', element: <GagnantsPrix /> },
       { path: 'themes/activites-workshop', element: <ActivitesWorkshop /> },
       { path: 'le-prix', element: <LePrix /> },
+      { path: 'visite-guidees', element: <VisiteGuidees /> },
     ],
   },
 ])

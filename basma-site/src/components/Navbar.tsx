@@ -34,7 +34,7 @@ function Navbar() {
           <div className="px-5 py-5 space-y-2">
             <ColoredLink index={0} isOpen={open} to="/" label="Accueil" colors="from-neutral-600 to-neutral-600" onClick={() => setOpen(false)} />
             <ColoredLink index={1} isOpen={open} to="/LeSalon" label="Le Salon" colors="from-fuchsia-600 to-rose-600" onClick={() => setOpen(false)} />
-            <ColoredLink index={2} isOpen={open} to="/le-prix" label="Le Prix" colors="from-amber-600 to-orange-600" onClick={() => setOpen(false)} />
+            <ColoredLink index={2} isOpen={open} to="/le-prix" label="Le Prix Émergence" colors="from-amber-600 to-orange-600" onClick={() => setOpen(false)} />
 
             {/* ACTIVITES with submenu */}
             <div
@@ -55,11 +55,12 @@ function Navbar() {
                   <SubLink to="/themes/activites-workshop" label="Les Workshops" onClick={() => { setOpen(false); setActivitesOpen(false) }} />
                   <SubLink to="/themes/activites-workshop" label="Les Ateliers et Masterclass" onClick={() => { setOpen(false); setActivitesOpen(false) }} />
                   <SubLink to="/NosConferences" label="Les Conférences" onClick={() => { setOpen(false); setActivitesOpen(false) }} />
+                  <SubLink to="/visite-guidees" label="Visite guidées" onClick={() => { setOpen(false); setActivitesOpen(false) }} />
                 </div>
               </div>
             </div>
 
-            <ColoredLink index={4} isOpen={open} to="/themes/expo-marrakech" label={`Ce Geste vient d'ailleurs 1.54 Marrakech`} colors="from-violet-600 to-indigo-600" onClick={() => setOpen(false)} />
+            <ColoredLink index={4} isOpen={open} to="/themes/expo-marrakech" label={`1.54 OFF 2026 de Marrakech`} colors="from-violet-600 to-indigo-600" onClick={() => setOpen(false)} />
           </div>
         </div>
       </div>
