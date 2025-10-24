@@ -1,7 +1,6 @@
-import { useState } from 'react'
+
 
 function VisiteGuidees() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0)
 
   return (
     <div className="min-h-screen bg-white">
