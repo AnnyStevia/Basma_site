@@ -114,9 +114,9 @@ function LePrix() {
             {[
               { img: hommeIcon, name: 'Mahi BINEBINE', role: 'À remplir', bio: 'À remplir' },
               { img: hommeIcon, name: 'Ousseynou WADE', role: 'À remplir', bio: 'À remplir' },
-              { img: femmeIcon, name: 'Fatima-Zahra LAKRISSA', role: 'À remplir', bio: 'À remplir' },
+              { img: femmeIcon, name: 'Rim LAABI', role: 'À remplir', bio: 'À remplir' },
               { img: femmeIcon, name: 'Kenza AMROUK', role: 'À remplir', bio: 'À remplir' },
-              { img: hommeIcon, name: 'Nabil BAHYA', role: 'À remplir', bio: 'À remplir' },
+              { img: hommeIcon, name: 'Farah MAAKEL', role: 'À remplir', bio: 'À remplir' },
               { img: hommeIcon, name: 'Ilyass ALAMI AFILAL', role: 'À remplir', bio: 'À remplir' },
             ].map((m, i) => (
               <JuryCard key={i} img={m.img} name={m.name} role={m.role} bio={m.bio} />
