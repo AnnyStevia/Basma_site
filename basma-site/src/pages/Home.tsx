@@ -231,7 +231,7 @@ function Home() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Right mini slider */}
-          <div className="order-1 lg:order-1 w-full max-w-lg mx-auto lg:mx-0">
+          <div className="order-2 lg:order-1 w-full max-w-lg mx-auto lg:mx-0">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-2xl p-1 shadow-xl">
@@ -241,7 +241,7 @@ function Home() {
           </div>
 
           {/* Left text */}
-          <div className="order-2 lg:order-2">
+          <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/80 px-3 py-1 text-xs text-amber-700 shadow-sm mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
               <span className="font-medium">Reconnaissance & Excellence</span>
@@ -335,7 +335,7 @@ function Home() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Right mini slider */}
-          <div className="order-1 lg:order-1 w-full max-w-lg mx-auto lg:mx-0">
+          <div className="order-2 lg:order-1 w-full max-w-lg mx-auto lg:mx-0">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-2xl p-1 shadow-xl">
@@ -345,7 +345,7 @@ function Home() {
           </div>
 
           {/* Left text */}
-          <div className="order-2 lg:order-2">
+          <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/80 px-3 py-1 text-xs text-indigo-700 shadow-sm mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
               <span className="font-medium">Transmission & Débat</span>
@@ -439,7 +439,7 @@ function Home() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Right mini slider */}
-          <div className="order-1 lg:order-1 w-full max-w-lg mx-auto lg:mx-0">
+          <div className="order-2 lg:order-1 w-full max-w-lg mx-auto lg:mx-0">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
               <div className="relative bg-white rounded-2xl p-1 shadow-xl">
@@ -449,7 +449,7 @@ function Home() {
           </div>
 
           {/* Left text */}
-          <div className="order-2 lg:order-2">
+          <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white/80 px-3 py-1 text-xs text-violet-700 shadow-sm mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
               <span className="font-medium">Circulation Culturelle</span>
