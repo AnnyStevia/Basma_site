@@ -319,13 +319,13 @@ function ExpoMarrakech() {
               .map(([path, url]) => {
                 const name = deriveArtistNameFromFilename(getFileNameFromPath(path))
                 const location = findLocationForName(name)
-                console.log('Artist:', { path, url, name, location }) // Debug log
                 return {
                   name,
                   imageUrl: url as string,
                   location,
                 }
-              })}
+              })
+              .filter(a => Boolean(a.location))}
           />
         </div>
       </section>

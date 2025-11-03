@@ -111,9 +111,7 @@ function Home() {
             </h1>
             
             <p className="text-base md:text-xl text-white/95 bg-gradient-to-r from-black/40 to-black/60 px-4 md:px-6 py-3 md:py-4 rounded-xl animate-[fadeUp_700ms_ease-out_250ms_both] backdrop-blur-sm border border-white/10">
-              Nous révélons, accompagnons et célébrons la nouvelle génération d'artistes au Maroc. 
-              À travers expositions, ateliers et workshops, nous offrons des opportunités concrètes pour faire rayonner 
-              leurs œuvres et rencontrer des publics et des professionnels.
+              Née de l’élan de solidarité artistique de 2020, BASMA accompagne et valorise la jeune création marocaine. L’association repère les talents issus des Beaux-Arts et de la scène autodidacte, les forme à la professionnalisation, les relie à des opportunités concrètes, et œuvre pour leur reconnaissance au sein de l’écosystème artistique national et international. Soutenir, connecter, révéler — BASMA fait émerger les voix artistiques de demain.
             </p>
             
             <p className="text-sm md:text-base text-white/85 animate-[fadeUp_700ms_ease-out_280ms_both] hidden sm:block max-w-4xl mx-auto">
@@ -293,9 +291,12 @@ function Home() {
             </h2>
             <div className="space-y-4">
               <p className="text-sm md:text-lg text-neutral-700 leading-relaxed bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/50 shadow-sm">
-                Des formats courts et intensifs pour expérimenter, se perfectionner et faire émerger des projets concrets.
-                Encadrés par des artistes et mentors, les workshops favorisent la pratique, l'échange et le feedback exigeant
-                dans une atmosphère bienveillante.
+                Apprendre. Créer. Évoluer.
+
+                Les workshops de BASMA sont des espaces d’expérimentation et de rencontre.
+                Ici, les jeunes artistes échangent avec des professionnel·le·s, explorent de nouvelles pratiques, et transforment leurs idées en œuvres puissantes.
+
+                Chaque atelier est une passerelle entre le talent brut et l’expression accomplie.
               </p>
               <p className="text-xs md:text-sm text-neutral-600 bg-white/40 backdrop-blur-sm p-3 rounded-lg border border-white/30">
                 Techniques mixtes, photographie, édition, textiles, recherche ou performance — choisissez votre terrain de jeu
@@ -398,12 +399,20 @@ function Home() {
             </h2>
             <div className="space-y-4">
               <p className="text-sm md:text-lg text-neutral-700 leading-relaxed bg-white/60 backdrop-blur-sm p-4 rounded-xl border border-white/50 shadow-sm">
-                Une programmation accessible et généreuse pour tous les publics: visites guidées, rencontres, formats courts et
-                moments festifs. L'objectif: partager l'art et susciter la curiosité, quel que soit l'âge ou le niveau de pratique.
+                Le Grand Public : quand l’art sort des murs et touche les cœurs.
+
+                BASMA fait vivre l’art au-delà des galeries. À travers expositions, performances, conférences et actions culturelles, nous invitons le public à rencontrer les artistes, à dialoguer, à ressentir.
+
+                Parce que l’art appartient à tous, nos événements créent des passerelles entre la création contemporaine et la vie quotidienne.
+
+                Regarder, écouter, comprendre, vibrer — chaque rencontre est une expérience à part entière, où chacun devient acteur de la scène artistique marocaine.
               </p>
               <p className="text-xs md:text-sm text-neutral-600 bg-white/40 backdrop-blur-sm p-3 rounded-lg border border-white/30">
-                En famille, entre ami·e·s ou en solo, découvrez une sélection d'expériences pensées pour ouvrir des portes et
-                donner envie de revenir. Parce que l'art se vit, se discute et se transmet.
+                L’art n’est pas réservé aux initiés.
+
+                Avec BASMA, le grand public devient explorateur, curieux, témoin et partenaire de la jeune création contemporaine.
+
+                Voir, ressentir, partager : l’art s’invite dans la vie de tous les jours.
               </p>
             </div>
             <div className="mt-6">
