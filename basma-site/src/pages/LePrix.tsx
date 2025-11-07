@@ -1,8 +1,156 @@
+import { useState, type KeyboardEvent, type MouseEvent } from 'react'
+
 import hero from '../assets/image/herof.jpg'
 import hommeIcon from '../assets/image/homme.png'
-import femmeIcon from '../assets/image/femme.png'
+import MahiBinebinePhoto from '../assets/image/jurys/Mahi_Binebine Photo 1.jpeg'
+import OusseynouWadePhoto from '../assets/image/jurys/Oussaynou wade.jpg'
+import FarahMaakelPhoto from '../assets/image/jurys/Farah Maakal.jpeg'
+import KenzaAmroukPhoto from '../assets/image/jurys/Kenza Amrouk.jpg'
+import RimLaabiPhoto from '../assets/image/jurys/Rim Laabi.jpeg'
 
 function LePrix() {
+  const juryMembers: JuryMember[] = [
+    {
+      img: MahiBinebinePhoto,
+      name: 'Mahi BINEBINE',
+      role: 'Artiste peintre et écrivain',
+      country: 'Maroc',
+      bio: `Né en 1959 à Marrakech, Mahi Binebine s’installe à Paris en 1980 pour y poursuivre ses études de mathématiques qu’il enseigne pendant huit ans, avant de se consacrer à l’écriture et à la peinture. Il s’installe à New York de 1994 à 1999 puis retourne à Paris qu’il quitte en 2002 pour regagner son pays d'origine où il vit et travaille désormais. Ses peintures figurent dans les collections du Guggenheim Museum, du Smithsonian, du Perez Museum, de l’Institut du Monde Arabe et de nombreuses collections publiques et privées. Romancier traduit dans une quinzaine de langues, il co-préside avec Nabil Ayouch les centres culturels « Les Étoiles » de la fondation Ali Zaoua.`,
+      social: {
+        label: 'Instagram',
+        handle: '@mahibinebin',
+        url: 'https://www.instagram.com/mahibinebine?igsh=bmJhYnFzMzB2cjJ1',
+      },
+      theme: {
+        frameGradient: 'from-sky-300/90 via-blue-400/85 to-indigo-500/85',
+        topGlow: 'from-blue-300/40 via-sky-200/30 to-indigo-400/40',
+        bottomGlow: 'from-sky-200/40 via-white/30 to-indigo-300/35',
+        avatarGradient: 'from-sky-300/70 via-white/30 to-blue-400/70',
+        roleChip: 'from-sky-200/70 via-white/70 to-blue-100/70',
+        roleDot: 'bg-blue-500/80',
+        toggleOpen: 'bg-sky-200/60 text-blue-700',
+        quoteTop: 'text-sky-300/80',
+        quoteBottom: 'text-blue-300/80',
+        socialDot: 'bg-blue-500/80',
+      },
+    },
+    {
+      img: OusseynouWadePhoto,
+      name: 'Ousseynou WADE',
+      role: 'Consultant en management artistique et commissaire d’exposition',
+      country: 'Sénégal',
+      bio: `Conseiller aux Affaires culturelles de formation, Ousseynou Wade capitalise une riche expérience en politique culturelle et en management artistique. Après plusieurs années au cabinet du Ministère de la Culture en qualité de conseiller technique, il devient secrétaire général de la Biennale de l’art africain contemporain, pilotant six éditions de Dakar et accompagnant de nombreux artistes du continent et de la diaspora. Directeur des Arts en 2014, il intervient comme expert pour l’Union Européenne et l’Organisation internationale de la Francophonie, contribuant à des missions à Paris, Lisbonne, Abidjan ou Lomé. Commandeur de l’Ordre National du Lion (Sénégal) et Chevalier de l’Ordre des Arts et des Lettres (France), il reste une voix essentielle des politiques culturelles africaines.`,
+      theme: {
+        baseBg: 'bg-[#20234d]',
+        frameGradient: 'from-[#20234d] via-[#20234d] to-[#20234d]',
+        topGlow: 'from-[#39408a]/40 via-[#20234d]/30 to-[#2b2f68]/40',
+        bottomGlow: 'from-[#39408a]/35 via-[#20234d]/25 to-[#1d1f47]/35',
+        avatarGradient: 'from-[#303571]/80 via-white/10 to-[#1f224e]/80',
+        roleChip: 'from-white/15 via-white/10 to-white/5',
+        roleDot: 'bg-white/80',
+        toggleOpen: 'bg-white/20 text-white/90',
+        quoteTop: 'text-white/40',
+        quoteBottom: 'text-white/30',
+        socialDot: 'bg-white/70',
+        mode: 'dark',
+      },
+    },
+    {
+      img: RimLaabiPhoto,
+      name: 'Rim LAÂBI',
+      role: 'Artiste plasticienne, commissaire et professeure',
+      country: 'Maroc',
+      bio: `Artiste plasticienne née en 1973, Rim Laâbi vit et travaille à Rabat après des années entre Athènes et Paris. Docteure en arts plastiques (Paris I – Sorbonne), commissaire d’exposition, conférencière et professeure universitaire, elle enseigne l’histoire des arts et des idées ainsi que les pratiques plastiques à l’Université Mohammed V de Rabat. Sa pratique se nourrit de matériaux récoltés en arpentant terre, ciel et mer, pour créer un univers rhizomique où couleurs, textures et matières dialoguent entre héritages artisanaux et modernité.`,
+      social: {
+        label: 'Instagram',
+        handle: '@rimlaabi9',
+        url: 'https://www.instagram.com/rimlaabi9/',
+      },
+      theme: {
+        frameGradient: 'from-indigo-400/90 via-blue-500/85 to-slate-600/85',
+        topGlow: 'from-indigo-400/40 via-blue-300/30 to-slate-500/40',
+        bottomGlow: 'from-indigo-300/35 via-white/30 to-slate-400/35',
+        avatarGradient: 'from-indigo-400/70 via-white/30 to-blue-500/70',
+        roleChip: 'from-indigo-200/70 via-white/70 to-blue-100/70',
+        roleDot: 'bg-indigo-500/80',
+        toggleOpen: 'bg-indigo-200/60 text-indigo-700',
+        quoteTop: 'text-indigo-300/80',
+        quoteBottom: 'text-blue-300/80',
+        socialDot: 'bg-indigo-500/80',
+      },
+    },
+    {
+      img: KenzaAmroukPhoto,
+      name: 'Kenza AMROUK',
+      role: 'Curatrice-chercheuse, conseillère en ingénierie culturelle et éditrice',
+      country: 'Maroc',
+      bio: `Ancienne directrice manager de la Galerie Chantal Crousel à Paris, Kenza Amrouk est formée en économie, gestion et histoire de l’art. Fondatrice de KAC Art Agency, elle développe des dispositifs de conseil, de production et de diffusion pour l’art contemporain tout en éditant des livres d’artistes avec les Éditions [KA] Art. Co-fondatrice de La Découpe, elle mène en parallèle une pratique curatoriale et d’écriture nourrie par une réflexion anthropologique sur la notion de paysage et son lien avec l’identité humaine, en particulier dans le contexte méditerranéen. Elle publie et organise des expositions entre l’Europe, l’Afrique du Nord et les États-Unis.`,
+      social: {
+        label: 'Instagram',
+        handle: '@kenza_amrouk',
+        url: 'https://www.instagram.com/kenza_amrouk/',
+      },
+      theme: {
+        baseBg: 'bg-[#f0e8d9]',
+        frameGradient: 'from-[#f0e8d9] via-[#f7f2e7] to-[#f0e8d9]',
+        topGlow: 'from-[#f7f2e7]/40 via-[#f0e8d9]/25 to-[#e8dcc8]/35',
+        bottomGlow: 'from-[#f7f2e7]/35 via-[#f0e8d9]/25 to-[#e8dcc8]/35',
+        avatarGradient: 'from-transparent via-transparent to-transparent',
+        roleChip: 'from-white/70 via-white/60 to-white/50',
+        roleDot: 'bg-[#db4e30]',
+        toggleOpen: 'bg-white/70 text-[#db4e30]',
+        quoteTop: 'text-[#db4e30]/40',
+        quoteBottom: 'text-[#db4e30]/30',
+        socialDot: 'bg-[#db4e30]',
+        mode: 'light',
+        accentColor: '#db4e30',
+        imageOverlay: false,
+      },
+    },
+    {
+      img: FarahMaakelPhoto,
+      name: 'Farah MAAKEL',
+      role: 'Performeuse et curatrice dramaturgique',
+      country: 'Maroc',
+      bio: `Farah Maakel explore l’inclusion dans les espaces culturels à travers une approche curatoriale dramaturgique qui poétise les questions décoloniales et favorise l’immersion des publics. Diplômée en chorégraphie (ISAC – Bruxelles), en culture postcoloniale et politique internationale (Goldsmiths, Londres) puis en sciences et techniques de l’exposition (La Sorbonne), elle travaille sur les dynamiques de retour de la diaspora au Maroc. Elle a curaté des expositions à Paris avec le Fonds d’Art Contemporain, à Los Angeles dans le jardin de David Horvitz, et intervient à UCLA autour de la peinture et de l’automatisation culturelle.`,
+      social: {
+        label: 'Instagram',
+        handle: '@farah.maakel',
+        url: 'https://www.instagram.com/farah.maakel/',
+      },
+      theme: {
+        frameGradient: 'from-cyan-400/90 via-blue-500/85 to-indigo-600/85',
+        topGlow: 'from-cyan-400/40 via-blue-300/30 to-indigo-500/40',
+        bottomGlow: 'from-cyan-300/35 via-white/30 to-indigo-400/35',
+        avatarGradient: 'from-cyan-400/70 via-white/30 to-blue-500/70',
+        roleChip: 'from-cyan-200/70 via-white/70 to-blue-100/70',
+        roleDot: 'bg-cyan-500/80',
+        toggleOpen: 'bg-cyan-200/60 text-blue-700',
+        quoteTop: 'text-cyan-300/80',
+        quoteBottom: 'text-blue-300/80',
+        socialDot: 'bg-cyan-500/80',
+      },
+    },
+    {
+      img: hommeIcon,
+      name: 'Ilyass ALAMI AFILAL',
+      role: 'À remplir',
+      country: 'Maroc',
+      bio: 'À remplir',
+      theme: {
+        frameGradient: 'from-slate-400/90 via-blue-500/85 to-slate-700/85',
+        topGlow: 'from-slate-400/40 via-blue-300/30 to-slate-600/40',
+        bottomGlow: 'from-slate-300/35 via-white/30 to-slate-500/35',
+        avatarGradient: 'from-slate-400/70 via-white/30 to-blue-500/70',
+        roleChip: 'from-slate-200/70 via-white/70 to-blue-100/70',
+        roleDot: 'bg-slate-500/80',
+        toggleOpen: 'bg-slate-200/60 text-slate-700',
+        quoteTop: 'text-slate-300/80',
+        quoteBottom: 'text-blue-300/80',
+        socialDot: 'bg-slate-500/80',
+      },
+    },
+  ]
   return (
     <div className="font-serif min-h-screen relative bg-white">
       <section className="relative w-full bg-center bg-cover min-h-[240px] md:min-h-[360px]" style={{ backgroundImage: `url(${hero})` }}>
@@ -111,15 +259,8 @@ function LePrix() {
           </div>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { img: hommeIcon, name: 'Mahi BINEBINE', role: 'À remplir', bio: 'À remplir' },
-              { img: hommeIcon, name: 'Ousseynou WADE', role: 'À remplir', bio: 'À remplir' },
-              { img: femmeIcon, name: 'Rim LAABI', role: 'À remplir', bio: 'À remplir' },
-              { img: femmeIcon, name: 'Kenza AMROUK', role: 'À remplir', bio: 'À remplir' },
-              { img: hommeIcon, name: 'Farah MAAKEL', role: 'À remplir', bio: 'À remplir' },
-              { img: hommeIcon, name: 'Ilyass ALAMI AFILAL', role: 'À remplir', bio: 'À remplir' },
-            ].map((m, i) => (
-              <JuryCard key={i} img={m.img} name={m.name} role={m.role} bio={m.bio} />
+            {juryMembers.map((member) => (
+              <JuryCard key={member.name} {...member} />
             ))}
           </div>
         </div>
@@ -130,45 +271,222 @@ function LePrix() {
 
 export default LePrix
 
-function JuryCard({ img, name, role, bio }: { img: string; name: string; role: string; bio: string }) {
+type SocialLink = {
+  label: string
+  handle: string
+  url: string
+}
+
+type JuryTheme = {
+  baseBg?: string
+  frameGradient: string
+  topGlow: string
+  bottomGlow: string
+  avatarGradient: string
+  roleChip: string
+  roleDot: string
+  toggleOpen: string
+  quoteTop: string
+  quoteBottom: string
+  socialDot: string
+  mode?: 'light' | 'dark'
+  accentColor?: string
+  imageOverlay?: boolean
+}
+
+type JuryMember = {
+  img: string
+  name: string
+  role: string
+  bio: string
+  country: string
+  social?: SocialLink
+  theme: JuryTheme
+}
+
+function JuryCard({ img, name, role, bio, country, social, theme }: JuryMember) {
   const [firstName, ...lastParts] = name.split(' ')
   const lastName = lastParts.join(' ')
-  const country = 'Maroc'
+  const [isOpen, setIsOpen] = useState(false)
+  const contentId = `jury-bio-${name.replace(/\s+/g, '-').toLowerCase()}`
+  const preview = bio.length > 260 ? `${bio.slice(0, 260).trim()}…` : bio
+  const isDark = theme.mode === 'dark'
+  const accentColor = theme.accentColor
+  const accentStyle = accentColor ? { color: accentColor } : undefined
+
+  const handleToggle = () => setIsOpen((prev) => !prev)
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      handleToggle()
+    }
+  }
+
+  const stopPropagation = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation()
+  }
 
   return (
-    <article className="group will-animate animate-[fadeUp_600ms_ease-out_60ms_both]">
-      <div className="rounded-2xl bg-white/80 backdrop-blur-sm ring-1 ring-neutral-200 hover:ring-neutral-300 transition-shadow duration-300 shadow-sm hover:shadow-md overflow-hidden p-4 md:p-5">
-        <div className="flex items-start gap-3 md:gap-4">
-          <div className="shrink-0 rounded-xl overflow-hidden ring-1 ring-neutral-200 bg-neutral-100 shadow-xs">
-            <img src={img} alt={name} className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2 md:gap-2.5">
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-neutral-300" />
-                <span className="text-neutral-500">Nom</span>
-                <span className="font-medium text-neutral-900 truncate">{lastName || firstName}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-300" />
-                <span className="text-neutral-500">Prénom</span>
-                <span className="font-medium text-neutral-900 truncate">{firstName}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
-                <span className="text-neutral-500">Pays</span>
-                <span className="font-medium text-neutral-900 truncate">{country}</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-gradient-to-b from-white to-neutral-50 px-3 py-1 text-[11px] text-neutral-700 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
-                <span className="text-neutral-500">Qualité</span>
-                <span className="font-medium text-neutral-900 truncate">{role}</span>
+    <article
+      className={`group relative isolate cursor-pointer overflow-hidden rounded-3xl ${
+        theme.baseBg ?? 'bg-white/80'
+      } font-serif shadow-[0_20px_45px_rgba(15,23,42,0.1)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(15,23,42,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${
+        isDark ? 'text-white' : accentColor ? '' : 'text-neutral-900'
+      }`}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
+      onClick={handleToggle}
+      onKeyDown={handleKeyDown}
+    >
+      <div className={`absolute inset-0 -z-10 bg-gradient-to-br ${theme.frameGradient} opacity-45 transition-opacity duration-500 group-hover:opacity-65`} />
+      <div
+        className={`absolute inset-0 -z-20 ${
+          isDark
+            ? 'bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.2),transparent_65%)]'
+            : 'bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.85),transparent_60%)]'
+        }`}
+      />
+
+      <div className="relative flex flex-col gap-5 p-5 md:p-6">
+        <figure className="relative overflow-hidden rounded-[1.9rem]">
+          {theme.imageOverlay !== false && (
+            <div className={`absolute inset-0 bg-gradient-to-br ${theme.avatarGradient} opacity-60 mix-blend-multiply`} />
+          )}
+          <img src={img} alt={name} className="h-56 w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]" />
+          {theme.imageOverlay !== false && (
+            <div className={isDark ? 'absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent' : 'absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent'} />
+          )}
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+            <div className={`space-y-2 drop-shadow-md ${accentColor ? '' : 'text-white'}`} style={accentStyle}>
+              <span
+                className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] ${
+                  accentColor ? 'bg-white/80 text-[inherit]' : 'bg-white/30 text-white'
+                }`}
+                style={accentStyle}
+              >
+                Jury
+              </span>
+              <div>
+                <h3 className={`text-xl font-semibold tracking-tight ${accentColor ? '' : ''}`} style={accentStyle}>
+                  {name}
+                </h3>
+                <p className={`text-sm font-medium ${accentColor ? '' : 'text-white/90'}`} style={accentStyle}>
+                  {role}
+                </p>
               </div>
             </div>
-            <h3 className="mt-2 text-sm md:text-base font-semibold tracking-tight text-neutral-900 line-clamp-1">{name}</h3>
+            <span
+              aria-hidden="true"
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/50 bg-white/80 text-sm font-medium shadow-sm transition-all duration-500 ${
+                isOpen ? `rotate-45 ${theme.toggleOpen}` : accentColor ? 'text-[inherit]' : 'text-neutral-500'
+              }`}
+              style={accentStyle}
+            >
+              +
+            </span>
+          </div>
+        </figure>
+
+        <div
+          className={`flex flex-wrap items-center gap-2 text-[11px] font-medium ${
+            isDark ? 'text-white/80' : accentColor ? '' : 'text-neutral-600'
+          }`}
+          style={accentStyle}
+        >
+          <span
+            className={`inline-flex items-center gap-1 rounded-full px-3 py-1 shadow-sm ring-1 transition-colors duration-200 ${
+              isDark ? 'bg-white/10 ring-white/25 text-white/90' : 'bg-white/75 ring-white/60'
+            }`}
+            style={accentStyle}
+          >
+            <span className={`h-1.5 w-1.5 rounded-full ${theme.roleDot}`} />
+            {country}
+          </span>
+          <span
+            className={`inline-flex items-center gap-1 rounded-full px-3 py-1 shadow-sm ring-1 ${
+              isDark ? 'bg-white/10 ring-white/25 text-white/90' : 'bg-white/70 ring-white/60'
+            }`}
+            style={accentStyle}
+          >
+            <span className={`h-1.5 w-1.5 rounded-full ${isDark ? 'bg-white/70' : 'bg-neutral-400/80'}`} />
+            {lastName || firstName}
+          </span>
+          {social && (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noreferrer"
+              onClick={stopPropagation}
+              className={`inline-flex items-center gap-1 rounded-full px-3 py-1 shadow-sm ring-1 transition-colors duration-200 ${
+                isDark
+                  ? 'bg-white/10 text-white/90 ring-white/25 hover:text-sky-200'
+                  : accentColor
+                  ? 'bg-white/80 ring-white/60 hover:brightness-90'
+                  : 'bg-white/80 text-neutral-700 ring-white/60 hover:text-indigo-600'
+              }`}
+              style={accentStyle}
+            >
+              <span className={`h-1.5 w-1.5 rounded-full ${theme.socialDot}`} />
+              {social.handle}
+            </a>
+          )}
+        </div>
+
+        <p
+          className={`text-sm leading-relaxed transition-all duration-500 ${
+            isOpen
+              ? 'pointer-events-none opacity-0 -translate-y-1'
+              : isDark
+              ? 'opacity-90 translate-y-0 text-white/85'
+              : accentColor
+              ? 'opacity-90 translate-y-0'
+              : 'opacity-90 translate-y-0 text-neutral-600'
+          }`}
+          style={accentStyle}
+        >
+          {preview}
+        </p>
+        <p
+          className={`text-[12px] italic transition-opacity duration-500 ${
+            isOpen
+              ? 'opacity-0'
+              : isDark
+              ? 'opacity-85 text-white/65'
+              : accentColor
+              ? 'opacity-90'
+              : 'opacity-90 text-neutral-500'
+          }`}
+          style={accentStyle}
+        >
+          Cliquez pour plonger dans son parcours.
+        </p>
+
+        <div
+          id={contentId}
+          className={`relative overflow-hidden rounded-2xl border text-sm leading-relaxed shadow-inner transition-all duration-500 ${
+            isDark
+              ? isOpen
+                ? 'max-h-[640px] border-white/30 bg-white/5 p-5 text-white/85 opacity-100'
+                : 'max-h-0 border-white/20 bg-white/0 p-0 text-white/85 opacity-0'
+              : isOpen
+              ? 'max-h-[640px] border-white/70 bg-white/90 p-5 text-neutral-700 opacity-100'
+              : 'max-h-0 border-white/70 bg-white/90 p-0 text-neutral-700 opacity-0'
+          }`}
+          aria-hidden={!isOpen}
+        >
+          <span className={`absolute -top-6 left-6 text-4xl font-serif ${theme.quoteTop}`} style={accentStyle}>
+            “
+          </span>
+          <span className={`absolute -bottom-6 right-6 text-4xl font-serif ${theme.quoteBottom}`} style={accentStyle}>
+            ”
+          </span>
+          <div className={`relative z-10 whitespace-pre-line ${isDark ? 'text-white/80' : accentColor ? '' : 'text-neutral-700'}`} style={accentStyle}>
+            {bio}
           </div>
         </div>
-        <p className="mt-3 text-[12px] md:text-sm leading-relaxed text-neutral-600">{bio}</p>
       </div>
     </article>
   )
