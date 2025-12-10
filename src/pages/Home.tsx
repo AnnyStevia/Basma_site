@@ -101,7 +101,7 @@ function Home() {
           {/* Enhanced main content */}
           <div className="mt-6 md:mt-8 space-y-4 md:space-y-6 rounded-2xl bg-gradient-to-br from-black/60 via-black/50 to-black/60 backdrop-blur-sm p-6 md:p-8 shadow-2xl animate-[fadeUp_700ms_ease-out_150ms_both] border border-white/10">
             <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-tight text-white animate-[fadeUp_700ms_ease-out_200ms_both]">
-              Bienvenue sur{' '}
+              Cinq ans d’élan créatif{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent font-bold">
                   Beaux‑Arts Solidarité Maroc
@@ -111,12 +111,11 @@ function Home() {
             </h1>
             
             <p className="text-base md:text-xl text-white/95 bg-gradient-to-r from-black/40 to-black/60 px-4 md:px-6 py-3 md:py-4 rounded-xl animate-[fadeUp_700ms_ease-out_250ms_both] backdrop-blur-sm border border-white/10">
-              Née de l’élan de solidarité artistique de 2020, BASMA accompagne et valorise la jeune création marocaine. L’association repère les talents issus des Beaux-Arts et de la scène autodidacte, les forme à la professionnalisation, les relie à des opportunités concrètes, et œuvre pour leur reconnaissance au sein de l’écosystème artistique national et international. Soutenir, connecter, révéler — BASMA fait émerger les voix artistiques de demain.
+              Cinq ans déjà que BASMA propulse l’audace des jeunes artistes : masterclass, workshops, friche éphémère, plateforme numérique… Une première édition du Salon national a éveillé les regards et rallié le public autour de l’art émergent au Maroc.
             </p>
             
             <p className="text-sm md:text-base text-white/85 animate-[fadeUp_700ms_ease-out_280ms_both] hidden sm:block max-w-4xl mx-auto">
-              Notre équipe réunit artistes, curateurs et mentors engagés. Ensemble, nous tissons des ponts entre
-              disciplines, territoires et publics pour faire circuler les idées et révéler des trajectoires singulières.
+              Cette deuxième édition, à la Villa des Arts de Casablanca, ajoute le Prix AL MADA EMERGENCE, accueille des talents du continent et déroule près de deux mois d’expériences gratuites et immersives. Un salon ouvert et fédérateur où chaque œuvre rencontre son public.
             </p>
             
             {/* Enhanced navigation buttons */}

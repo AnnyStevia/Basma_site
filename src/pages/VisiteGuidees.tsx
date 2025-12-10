@@ -1,19 +1,37 @@
 // Import des images
 import heroImage from '../assets/image/conferences/466669245_10162136551208234_8953480339713461583_n (1).jpg'
-// Images atelier
-import atelier1 from '../assets/image/atelier/486871050_1088886459922164_4966030406835988211_n.jpg'
-import atelier2 from '../assets/image/atelier/486805115_1088360563308087_7628630968930271535_n.jpg'
-import atelier3 from '../assets/image/atelier/486611008_1088360486641428_6290542586408835721_n.jpg'
-import atelier4 from '../assets/image/atelier/486610315_1088360936641383_2690010386236441209_n.jpg'
-import atelier5 from '../assets/image/atelier/466167879_10162118159108234_8757469431173656918_n.jpg'
-// Images prix
-import prix1 from '../assets/image/prix/487533430_1088360623308081_7059243365164167540_n.jpg'
-import prix2 from '../assets/image/prix/487496900_1088360913308052_8246974907603960931_n.jpg'
-import prix3 from '../assets/image/prix/487446306_1088360519974758_4535856675029917714_n.jpg'
-import prix4 from '../assets/image/prix/487324208_1088360846641392_1135837011246611117_n.jpg'
-import prix5 from '../assets/image/prix/487065614_1088360506641426_1653589812142729089_n.jpg'
+// Galerie 2025
+import expo1 from '../assets/image/expo + ateliers/IMG-20251205-WA0012.jpg'
+import expo2 from '../assets/image/expo + ateliers/IMG-20251205-WA0015.jpg'
+import expo3 from '../assets/image/expo + ateliers/IMG-20251205-WA0016.jpg'
+import expo4 from '../assets/image/expo + ateliers/IMG-20251205-WA0017.jpg'
+import expo5 from '../assets/image/expo + ateliers/IMG-20251205-WA0018.jpg'
+import expo6 from '../assets/image/expo + ateliers/1.jpg'
+import expo7 from '../assets/image/expo + ateliers/2.jpg'
+import expo8 from '../assets/image/expo + ateliers/3.jpg'
+import expo9 from '../assets/image/expo + ateliers/4.jpg'
+import expo10 from '../assets/image/expo + ateliers/5.jpg'
+import expo11 from '../assets/image/expo + ateliers/6.jpg'
+import expo12 from '../assets/image/expo + ateliers/7.jpg'
+import expo13 from '../assets/image/expo + ateliers/8.jpg'
+import visite1 from '../assets/image/visites de groupes/IMG-20251205-WA0011.jpg'
+import visite2 from '../assets/image/visites de groupes/IMG-20251205-WA0020.jpg'
+import visite3 from '../assets/image/visites de groupes/IMG-20251205-WA0010.jpg'
+import visite4 from '../assets/image/visites de groupes/IMG-20251205-WA0009.jpg'
+import visite5 from '../assets/image/visites de groupes/9.jpg'
+import visite6 from '../assets/image/visites de groupes/10.jpg'
+import visite7 from '../assets/image/visites de groupes/11.jpg'
+import visite8 from '../assets/image/visites de groupes/12.jpg'
 
 function VisiteGuidees() {
+
+  const galleryImages = [
+    expo1, expo2, expo3, expo4, expo5,
+    expo6, expo7, expo8, expo9, expo10,
+    expo11, expo12, expo13,
+    visite1, visite2, visite3, visite4,
+    visite5, visite6, visite7, visite8,
+  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -157,7 +175,7 @@ function VisiteGuidees() {
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {[atelier1, atelier2, atelier3, atelier4, atelier5, prix1, prix2, prix3, prix4, prix5].map((image, index) => (
+              {galleryImages.map((image, index) => (
                 <div key={index} className="group relative overflow-hidden rounded-xl aspect-square">
                   <img 
                     src={image} 

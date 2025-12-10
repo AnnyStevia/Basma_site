@@ -1,24 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import workshopVideo from '../assets/videos/3864185-hd_1920_1080_25fps.mp4'
-import atelier1 from '../assets/image/atelier/486871050_1088886459922164_4966030406835988211_n.jpg'
-import atelier2 from '../assets/image/atelier/486610315_1088360936641383_2690010386236441209_n.jpg'
-import atelier3 from '../assets/image/atelier/486805115_1088360563308087_7628630968930271535_n.jpg'
-import atelier4 from '../assets/image/atelier/486611008_1088360486641428_6290542586408835721_n.jpg'
-import atelier5 from '../assets/image/atelier/466167879_10162118159108234_8757469431173656918_n.jpg'
-import atelier6 from '../assets/image/atelier/486871050_1088886459922164_4966030406835988211_n.jpg'
-import atelier7 from '../assets/image/atelier/486610315_1088360936641383_2690010386236441209_n.jpg'
-import atelier8 from '../assets/image/atelier/486805115_1088360563308087_7628630968930271535_n.jpg'
-import atelier9 from '../assets/image/atelier/486611008_1088360486641428_6290542586408835721_n.jpg'
-import atelier10 from '../assets/image/atelier/466167879_10162118159108234_8757469431173656918_n.jpg'
-import atelier11 from '../assets/image/atelier/486871050_1088886459922164_4966030406835988211_n.jpg'
-import atelier12 from '../assets/image/atelier/486610315_1088360936641383_2690010386236441209_n.jpg'
+// Images 2025 - Expo + Ateliers (existants)
+import atelier1 from '../assets/image/expo + ateliers/IMG-20251205-WA0012.jpg'
+import atelier2 from '../assets/image/expo + ateliers/IMG-20251205-WA0015.jpg'
+import atelier3 from '../assets/image/expo + ateliers/IMG-20251205-WA0016.jpg'
+import atelier4 from '../assets/image/expo + ateliers/IMG-20251205-WA0017.jpg'
+import atelier5 from '../assets/image/expo + ateliers/IMG-20251205-WA0018.jpg'
+import atelier6 from '../assets/image/expo + ateliers/1.jpg'
+import atelier7 from '../assets/image/expo + ateliers/2.jpg'
+import atelier8 from '../assets/image/expo + ateliers/3.jpg'
+import atelier9 from '../assets/image/expo + ateliers/4.jpg'
+import atelier10 from '../assets/image/expo + ateliers/5.jpg'
+import atelier11 from '../assets/image/expo + ateliers/6.jpg'
+import atelier12 from '../assets/image/expo + ateliers/7.jpg'
+import atelier13 from '../assets/image/expo + ateliers/8.jpg'
 
 function ActivitesWorkshop() {
   const heroRef = useRef<HTMLElement>(null)
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
-  const [activeIndex, setActiveIndex] = useState<number | null>(0)
   // Form state for Google Sheets webhook
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -28,114 +29,24 @@ function ActivitesWorkshop() {
   const [message, setMessage] = useState('')
 
   const workshops = [
-    {
-      id: 1,
-      title: "Peinture Contemporaine",
-      image: atelier1,
-      description: "Explorez les techniques modernes de peinture et développez votre style artistique unique.",
-      duration: "3 heures",
-      level: "Tous niveaux",
-      
-    },
-    {
-      id: 2,
-      title: "Sculpture sur Argile",
-      image: atelier2,
-      description: "Créez des œuvres en trois dimensions et découvrez l'art de la sculpture traditionnelle.",
-      duration: "4 heures",
-      level: "Débutant",
-      
-    },
-    {
-      id: 3,
-      title: "Photographie Artistique",
-      image: atelier3,
-      description: "Maîtrisez l'art de la composition et de la lumière pour créer des images captivantes.",
-      duration: "5 heures",
-      level: "Intermédiaire",
-      
-    },
-    {
-      id: 4,
-      title: "Art Numérique",
-      image: atelier4,
-      description: "Découvrez les outils numériques pour créer des œuvres d'art contemporaines.",
-      duration: "3 heures",
-      level: "Tous niveaux",
-      
-    },
-    {
-      id: 5,
-      title: "Calligraphie Arabe",
-      image: atelier5,
-      description: "Apprenez l'art ancestral de la calligraphie arabe et ses techniques traditionnelles.",
-      duration: "2 heures",
-      level: "Débutant",
-      
-    },
-    {
-      id: 6,
-      title: "Céramique & Poterie",
-      image: atelier6,
-      description: "Créez des pièces uniques en céramique et explorez les techniques de poterie.",
-      duration: "4 heures",
-      level: "Tous niveaux",
-      
-    },
-    {
-      id: 7,
-      title: "Mosaïque Artistique",
-      image: atelier7,
-      description: "Composez des œuvres colorées en assemblant des tesselles selon votre inspiration.",
-      duration: "3 heures",
-      level: "Débutant",
-      
-    },
-    {
-      id: 8,
-      title: "Gravure & Estampe",
-      image: atelier8,
-      description: "Découvrez les techniques de gravure et créez vos propres estampes originales.",
-      duration: "4 heures",
-      level: "Intermédiaire",
-      
-    },
-    {
-      id: 9,
-      title: "Art Textile",
-      image: atelier9,
-      description: "Explorez le tissage, la broderie et les techniques textiles traditionnelles.",
-      duration: "3 heures",
-      level: "Tous niveaux",
-      
-    },
-    {
-      id: 10,
-      title: "Sculpture sur Bois",
-      image: atelier10,
-      description: "Transformez le bois en œuvres d'art avec les techniques de sculpture traditionnelle.",
-      duration: "5 heures",
-      level: "Intermédiaire",
-      
-    },
-    {
-      id: 11,
-      title: "Peinture à l'Huile",
-      image: atelier11,
-      description: "Maîtrisez les techniques de la peinture à l'huile et ses effets de matière.",
-      duration: "4 heures",
-      level: "Avancé",
-      
-    },
-    {
-      id: 12,
-      title: "Installation Artistique",
-      image: atelier12,
-      description: "Créez des installations immersives et explorez l'art de l'espace.",
-      duration: "6 heures",
-      level: "Avancé",
-      
-    }
+    { id: 1, title: "Peinture Contemporaine", image: atelier1, description: "Explorez les techniques modernes de peinture et développez votre style artistique unique.", duration: "3 heures", level: "Tous niveaux" },
+    { id: 2, title: "Sculpture sur Argile", image: atelier2, description: "Créez des œuvres en trois dimensions et découvrez l'art de la sculpture traditionnelle.", duration: "4 heures", level: "Débutant" },
+    { id: 3, title: "Photographie Artistique", image: atelier3, description: "Maîtrisez l'art de la composition et de la lumière pour créer des images captivantes.", duration: "5 heures", level: "Intermédiaire" },
+    { id: 4, title: "Art Numérique", image: atelier4, description: "Découvrez les outils numériques pour créer des œuvres d'art contemporaines.", duration: "3 heures", level: "Tous niveaux" },
+    { id: 5, title: "Calligraphie Arabe", image: atelier5, description: "Apprenez l'art ancestral de la calligraphie arabe et ses techniques traditionnelles.", duration: "2 heures", level: "Débutant" },
+    { id: 6, title: "Céramique & Poterie", image: atelier6, description: "Créez des pièces uniques en céramique et explorez les techniques de poterie.", duration: "4 heures", level: "Tous niveaux" },
+    { id: 7, title: "Mosaïque Artistique", image: atelier7, description: "Composez des œuvres colorées en assemblant des tesselles selon votre inspiration.", duration: "3 heures", level: "Débutant" },
+    { id: 8, title: "Gravure & Estampe", image: atelier8, description: "Découvrez les techniques de gravure et créez vos propres estampes originales.", duration: "4 heures", level: "Intermédiaire" },
+    { id: 9, title: "Art Textile", image: atelier9, description: "Explorez le tissage, la broderie et les textures pour concevoir des pièces contemporaines.", duration: "3 heures", level: "Tous niveaux" },
+    { id: 10, title: "Sculpture sur Bois", image: atelier10, description: "Transformez le bois en œuvres d'art avec des techniques de sculpture fines.", duration: "5 heures", level: "Intermédiaire" },
+    { id: 11, title: "Peinture à l'Huile", image: atelier11, description: "Maîtrisez les effets de matière et les glacis pour enrichir vos toiles.", duration: "4 heures", level: "Avancé" },
+    { id: 12, title: "Installation Artistique", image: atelier12, description: "Créez des installations immersives et explorez l'art de l'espace.", duration: "6 heures", level: "Avancé" },
+  ]
+
+  const galleryImages = [
+    atelier1, atelier2, atelier3, atelier4, atelier5,
+    atelier6, atelier7, atelier8, atelier9, atelier10,
+    atelier11, atelier12, atelier13,
   ]
 
   useEffect(() => {
@@ -217,81 +128,70 @@ function ActivitesWorkshop() {
         </div>
       </section>
 
-      {/* Intro + Accordion */}
-      <section className="w-full py-10 md:py-14 bg-gradient-to-br from-indigo-100/60 via-rose-50/60 to-amber-50/60">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Workshops grid */}
+      <section className="w-full py-12 md:py-16 bg-gradient-to-br from-indigo-50 via-rose-50 to-amber-50">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 space-y-12">
           <div className="text-center max-w-3xl mx-auto animate-[fadeUp_600ms_ease-out_80ms_both]">
             <div className="mx-auto h-1 w-16 rounded-full bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400 shadow-[0_0_20px_rgba(244,114,182,0.35)]" />
-            <h2 className="mt-3 font-serif text-3xl md:text-4xl font-semibold tracking-tight bg-gradient-to-r from-indigo-700 via-rose-600 to-amber-600 bg-clip-text text-transparent">Nos workshops</h2>
-            <p className="mt-2 text-xs md:text-sm text-neutral-600">
-              Découvrez notre sélection d’ateliers: formats immersifs, échanges et pratique pour faire évoluer votre geste.
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl font-semibold tracking-tight bg-gradient-to-r from-indigo-700 via-rose-600 to-amber-600 bg-clip-text text-transparent">Workshops & créations</h2>
+            <p className="mt-3 text-sm md:text-base text-neutral-600">
+              Immersions, pratique et rencontres : parcourez nos ateliers et découvrez l’énergie des sessions BASMA.
             </p>
           </div>
-          
-          <div className="mt-8 max-w-6xl mx-auto divide-y divide-neutral-200 border border-neutral-200 rounded-xl bg-white/90 shadow-[0_10px_30px_rgba(2,6,23,0.06)] backdrop-blur supports-[backdrop-filter]:bg-white/70 ring-1 ring-transparent [background-image:linear-gradient(white,white),linear-gradient(to_right,theme(colors.indigo.200),theme(colors.rose.200),theme(colors.amber.200))] [background-origin:border-box] [background-clip:padding-box,border-box]">
-            <AccordionItem
-              title="Workshop — introduction"
-              image={atelier1}
-              isOpen={activeIndex === 0}
-              onToggle={() => setActiveIndex(activeIndex === 0 ? null : 0)}
-            >
-              Mise en contexte des workshops: objectifs, déroulé et méthodes. Nous abordons les outils de préparation,
-              l’importance des références et de l’expérimentation, ainsi que la valorisation des résultats (portfolio, présentation).
-              Vous repartirez avec un plan de travail clair, des ressources méthodologiques et des pistes d’entraînement pour
-              consolider votre pratique entre les sessions. Nous verrons aussi comment documenter efficacement vos progrès.
 
-              <div className="mt-4 space-y-3">
-                <h4 className="font-serif text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">Construire sa pratique</h4>
-                <p className="text-sm md:text-base text-neutral-700">
-                  Méthodes pour structurer vos ateliers: objectifs clairs, étapes de production, documentation et retours. Conseils pour optimiser le temps, les matériaux et la qualité d’exécution.
-                </p>
-                <p className="text-sm md:text-base text-neutral-700">
-                  Exemples concrets, références et pistes d’action pour adapter les approches à votre niveau et à vos ambitions, tout en cultivant l’exigence et le plaisir de la pratique.
-                </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-3 pt-2">
-                  <img src={atelier2} alt="atelier visuel 1" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm hover:scale-[1.02] transition-transform duration-300" />
-                  <img src={atelier3} alt="atelier visuel 2" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm hover:scale-[1.02] transition-transform duration-300" />
-                  <img src={atelier4} alt="atelier visuel 3" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm hover:scale-[1.02] transition-transform duration-300" />
-                  <img src={atelier5} alt="atelier visuel 4" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm hover:scale-[1.02] transition-transform duration-300" />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {workshops.map((w) => (
+              <div key={w.id} className="group relative overflow-hidden rounded-2xl bg-white shadow-[0_10px_30px_rgba(2,6,23,0.08)] ring-1 ring-neutral-200/80 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(2,6,23,0.12)]">
+                <div className="relative h-56 overflow-hidden">
+                  <img src={w.image} alt={w.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80" />
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                    <span className="text-xs font-semibold bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20">{w.level}</span>
+                    <span className="text-xs font-semibold bg-white/15 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10">{w.duration}</span>
+                  </div>
+                </div>
+                <div className="p-5 space-y-3">
+                  <h3 className="font-serif text-xl text-neutral-900">{w.title}</h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{w.description}</p>
+                  <button
+                    onClick={() => setIsFormOpen(true)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-700 hover:text-rose-600 transition-colors"
+                  >
+                    Je m’inscris
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </button>
                 </div>
               </div>
-            </AccordionItem>
-            <AccordionItem
-              title="Atelier 1"
-              image={atelier2}
-              isOpen={activeIndex === 1}
-              onToggle={() => setActiveIndex(activeIndex === 1 ? null : 1)}
-            >
-              Focus pratique avec démonstrations guidées, exercices progressifs et retours personnalisés. L’accent est mis sur
-              l’acquisition de gestes sûrs et l’exploration de variations pour construire votre langage visuel. Un temps de
-              questions-réponses permet d’affiner votre posture, de corriger les erreurs courantes et d’optimiser vos outils.
-              Des mini‑projets vous aideront à appliquer immédiatement les techniques abordées.
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-3">
-                <img src={atelier6} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-                <img src={atelier7} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-                <img src={atelier8} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-                <img src={atelier9} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
+            ))}
+          </div>
+
+          {/* Photo gallery */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div>
+                <h3 className="font-serif text-2xl md:text-3xl text-neutral-900">Moments d’atelier</h3>
+                <p className="text-sm text-neutral-600">Une sélection de nos sessions 2025 — expo + ateliers et visites de groupes.</p>
               </div>
-            </AccordionItem>
-            <AccordionItem
-              title="Atelier 2"
-              image={atelier3}
-              isOpen={activeIndex === 2}
-              onToggle={() => setActiveIndex(activeIndex === 2 ? null : 2)}
-            >
-              Approfondissements techniques et compositionnels: du repérage au rendu final. Études de cas et partage
-              d’expériences pour consolider votre autonomie et gagner en précision. Nous travaillerons la gestion du temps,
-              la planification des étapes, et des critères d’auto‑évaluation pour gagner en cohérence. Vous constituerez un
-              corpus d’essais comparatifs afin d’identifier vos préférences et axes d’amélioration.
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-3">
-                <img src={atelier10} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-                <img src={atelier11} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-                <img src={atelier12} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-                <img src={atelier1} alt="atelier visuel" className="w-full h-24 md:h-28 object-cover rounded-xl ring-1 ring-neutral-200 shadow-sm" />
-              </div>
-            </AccordionItem>
-                      </div>
-                          </div>
+              <a href="#workshop" className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-700 hover:text-rose-600 transition-colors">
+                Voir le programme
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+              {galleryImages.map((image, idx) => (
+                <div key={idx} className="relative group overflow-hidden rounded-xl aspect-[4/5] bg-neutral-100">
+                  <img src={image} alt={`atelier ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       
@@ -487,44 +387,3 @@ function ActivitesWorkshop() {
 }
 
 export default ActivitesWorkshop
-
-function AccordionItem({ title, image, children, isOpen, onToggle }: { title: string; image: string; children: React.ReactNode; isOpen: boolean; onToggle: () => void }) {
-  const panelId = `${title.replace(/\s+/g, '-')}-panel`
-  return (
-    <div className="group/acc border-b last:border-b-0 border-neutral-200">
-      <button
-        type="button"
-        onClick={onToggle}
-        className="w-full flex items-center justify-between px-4 md:px-6 py-4 md:py-5 bg-white/60 backdrop-blur-sm hover:bg-white transition-colors"
-        aria-expanded={isOpen}
-        aria-controls={panelId}
-      >
-        <span className="text-base md:text-lg font-semibold text-neutral-900 tracking-tight">{title}</span>
-        <span
-          className={`ml-3 inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 text-neutral-700 bg-white shadow-sm transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-          aria-hidden
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </span>
-      </button>
-
-      <div
-        id={panelId}
-        className={`overflow-hidden transition-all duration-500 ease-out ${isOpen ? 'max-h-[900px] opacity-100' : 'max-h-0 opacity-0'}`}
-      >
-        <div className="px-4 md:px-6 pb-5">
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6 items-start">
-            <div className="text-sm md:text-base text-neutral-700 will-change-transform transition duration-500 ${isOpen ? '' : ''}">
-              {children}
-            </div>
-            <div className="rounded-xl overflow-hidden ring-1 ring-neutral-200 bg-white shadow-sm will-change-transform transition-transform duration-500 ease-out group-hover/acc:scale-[1.01]">
-              <img src={image} alt={title} className="w-full h-40 md:h-48 object-cover" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}

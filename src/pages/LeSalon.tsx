@@ -1,14 +1,19 @@
- 
 import affiche from '../assets/image/Affiche A3 Emerging-HD.jpg'
 import selectionImg from '../assets/image/selection.jpg'
 import hommeIcon from '../assets/image/homme.png'
 import femmeIcon from '../assets/image/femme.png'
 import artistsXlsx from '../assets/Liste artistes 2025 simple.xlsx'
+import vernissageVideo from '../assets/image/vernissage.mp4'
+import salonEmergentImg from '../assets/image/salon emergent.png'
+import wadeImg from '../assets/image/jurys/Oussaynou wade.jpg'
+import kenzaImg from '../assets/image/jurys/Kenza Amrouk.jpg'
+import farahImg from '../assets/image/jurys/Farah Maakal.jpeg'
 
 function LeSalon() {
   return (
     <div className="min-h-screen bg-white">
       <HeroImage />
+      <AfficheSection />
 
       {/* Le Comité */}
       <section id="committee" className="w-full bg-gradient-to-b from-[#000080]/8 via-blue-50/60 to-cyan-50/40 py-10 md:py-14">
@@ -27,19 +32,19 @@ function LeSalon() {
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { name: 'Ousseynou WADE', g: 'M' },
+              { name: 'Ousseynou WADE', g: 'M', img: wadeImg },
               { name: 'Fatima Zahra LAKRISSA', g: 'F' },
               { name: 'Ibtissam GHAZOUL', g: 'F' },
-              { name: 'Kenza AMROUK', g: 'F' },
+              { name: 'Kenza AMROUK', g: 'F', img: kenzaImg },
               { name: 'Nabil BAHYA', g: 'M' },
               { name: 'Ilyass ALAMI AFILAL', g: 'M' },
-              { name: 'Farah MAAKEL', g: 'F' },
+              { name: 'Farah MAAKEL', g: 'F', img: farahImg },
               { name: 'Mustapha AKRIM', g: 'M' },
               { name: 'Sanaa ZAGHOUD', g: 'F' },
             ].map((m, i) => (
               <CommitteeCard
                 key={i}
-                img={m.g === 'F' ? femmeIcon : hommeIcon}
+                img={m.img ?? (m.g === 'F' ? femmeIcon : hommeIcon)}
                 name={m.name}
               />
             ))}
@@ -156,11 +161,20 @@ function HeroImage() {
       </div>
       {/* Navy tint veil (#000080) for readability */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#000080]/85 via-[#000080]/75 to-[#000080]/85" />
-      {/* Layout: image left, text right */}
+      {/* Layout: video left, text right */}
       <div className="relative z-10 max-w-7xl mx-auto h-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 px-4 md:px-8 py-8 md:py-12 items-center">
-        {/* Left image - show entire poster */}
+        {/* Left media - video */}
         <div className="relative h-64 md:h-[480px] rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-lg bg-white/80 flex items-center justify-center p-3 md:p-4">
-          <img src={affiche} alt="Affiche" className="max-h-full max-w-full object-contain" />
+          <video
+            className="w-full h-full object-cover rounded-xl"
+            src={vernissageVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            poster={affiche}
+          />
           <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(1000px_600px_at_80%_40%,black,transparent)]" />
         </div>
 
@@ -189,6 +203,55 @@ function HeroImage() {
       </div>
       {/* Soft vignette edges */}
       <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(1200px_720px_at_50%_45%,black,transparent)]" />
+    </section>
+  )
+}
+
+function AfficheSection() {
+  return (
+    <section className="w-full py-10 md:py-14 bg-gradient-to-br from-blue-50/70 via-indigo-50/70 to-cyan-50/70">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 px-3 py-1 shadow-sm animate-[fadeUp_600ms_ease-out_60ms_both]">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
+            <span className="text-[11px] md:text-xs text-neutral-700 tracking-wide">Affiche officielle</span>
+          </div>
+          <h2 className="mt-4 font-serif text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">Édition 2025</h2>
+          <p className="mt-3 text-neutral-700 animate-[fadeUp_700ms_ease-out_120ms_both]">
+            Visuels, dates et partenaires du 2ᵉ Salon national des artistes contemporains émergents.
+          </p>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 items-start gap-6 md:gap-8">
+          <div className="flex justify-center">
+            <div className="relative rounded-2xl overflow-hidden ring-1 ring-neutral-200 bg-white shadow-md w-full max-w-xs">
+              <img src={affiche} alt="Affiche officielle du Salon Émergence 2025" className="w-full h-full object-contain" />
+            </div>
+          </div>
+
+          <div className="flex-1 space-y-3 text-neutral-700 text-sm md:text-base">
+            <p className="font-semibold text-neutral-900">
+              Émergence revient plus ambitieux : 40 artistes, 5 invités d’Afrique de l’Ouest et deux mois d’expositions, conférences, masterclasses et visites guidées.
+            </p>
+            <p>
+              Une scène contemporaine plurielle — peinture, sculpture, photographie, installations, arts numériques — pensée comme vitrine pour les talents émergents
+              et comme terrain de découverte pour tous les publics.
+            </p>
+            <p>
+              Nouveauté : le Prix Al MADA – ÉMERGENCE récompensera trois artistes pour leur audace et leur originalité, affirmant le Salon comme tremplin et moteur de carrière.
+            </p>
+            <p className="text-neutral-600">
+              Explorez, questionnez, laissez-vous surprendre : chaque œuvre ouvre un dialogue et invite à repenser nos imaginaires.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="relative rounded-2xl overflow-hidden ring-1 ring-neutral-200 bg-white shadow-md w-full max-w-xs">
+              <img src={salonEmergentImg} alt="Mise en scène du Salon Émergence" className="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
@@ -251,4 +314,3 @@ function CommitteeCard({ img, name }: { img: string; name: string }) {
     </article>
   )
 }
-
